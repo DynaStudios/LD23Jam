@@ -73,7 +73,7 @@ namespace LudumDare23.Scenes
             GL.Disable(EnableCap.Blend);
             GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
 
-            _splashScreenTexture = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.png");
+            _splashScreenTexture = Engine.TextureManager.getTexture(System.IO.Path.Combine("Images", "Game", "dyna_splash.png"));
         }
 
         public void unloadScene()
