@@ -111,8 +111,8 @@ namespace LudumDare23
 			if (k_cw) dy+=0.05;
 			if (k_cc) dy-=0.05;
 			// move
-			if (k_lf) {px-=cos(dy); pz-=sin(dy);}
-			if (k_rg) {px+=cos(dy); pz+=sin(dy);}
+			if (k_lf) {px-=cos(dy)*0.01; pz-=sin(dy)*0.01;}
+			if (k_rg) {px+=cos(dy)*0.01; pz+=sin(dy)*0.01;}
 		}
     }
 }

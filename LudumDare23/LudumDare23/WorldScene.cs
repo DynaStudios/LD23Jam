@@ -30,6 +30,8 @@ namespace LudumDare23
         public void loadScene()
         {
             player = new Player(Engine.InputDevice);
+            player.Position.x =  0.0;
+            player.Position.y =  0.0;
             player.Position.z = -3.0;
             Engine.Camera.WorldObject = (IWorldObject) player;
             //_room = new Room(Path.Combine(DynaStudios.Utils.StreamTool.DIR, "Maps", "map.xml"), Engine.TextureManager);
@@ -41,8 +43,24 @@ namespace LudumDare23
 
         public void doRender()
         {
+			
+			/*if (player.Position.x<0.0) player.Position.x+=0.005;
+			else                       player.Position.x-=0.005;
+			if (player.Position.y<0.0) player.Position.y+=0.005;
+			else                       player.Position.y-=0.005;
+			if (player.Direction.x<0.0) player.Direction.X+=0.005;
+			else                        player.Direction.X-=0.005;
+			if (player.Direction.y<0.0) player.Direction.Y+=0.005;
+			else                        player.Direction.Y-=0.005;*/
+			
             player.doMovement();
-
+			
+			//translate and rotate into the player's view
+			/*GL.LoadIdentity();
+			GL.Translate(-player.Position.x, -player.Position.y, -player.Position.z);
+			GL.Rotate (-player.Direction.X,1.0,0.0,0.0);
+			GL.Rotate (-player.Direction.Y,0.0,1.0,0.0);*/
+			
             _room.render();
         
             //Render GUI
