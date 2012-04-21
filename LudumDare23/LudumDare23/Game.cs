@@ -18,7 +18,7 @@ namespace LudumDare23
             addScene("mainWorld", mainWorld);
             
             //This is the Start Screen. Screens can switch screens.
-            switchScene("splashScreen");
+            switchScene("mainMenu");
         }
 
         static void Main(string[] args)
