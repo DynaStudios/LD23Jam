@@ -21,6 +21,7 @@ namespace LudumDare23
         private Player player;
 
         private int _abilityBarTextureId;
+        private int _abilitySelectedTextureId;
 
         public WorldScene(Engine engine)
         {
@@ -38,6 +39,7 @@ namespace LudumDare23
             //_room = new Room(Path.Combine(DynaStudios.Utils.StreamTool.DIR, "Maps", "map.xml"), Engine.TextureManager);
 
             _abilityBarTextureId = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "abilityBar.png"));
+            _abilitySelectedTextureId = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "abilitySelected.png"));
             string roomFilePath = Path.Combine(StreamTool.DIR, "Maps", "Room.xml");
             if (_room == null)
             {
@@ -86,6 +88,14 @@ namespace LudumDare23
             GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
             _room.render();
 
+            //Render GUI
+            renderGui();
+
+            _lastFrameTime = now;
+        }
+
+        private void renderGui()
+        {
             int texW = 800;
             int texH = 80;
 
@@ -111,44 +121,38 @@ namespace LudumDare23
             GL.TexCoord2(0, 0); GL.Vertex3(0.00f, 1.00f, 1.0f);
 
             GL.End();
-            GL.Disable(EnableCap.ScissorTest);
 
-            //Render GUI
-            //switchToOrthoRendering();
-            //GL.Disable(EnableCap.DepthTest);
-            //GL.LoadIdentity();
-            //renderGui();
-            _lastFrameTime = now;
-        }
+            int selTexW = 75;
+            int selTexH = 75;
 
-        private void renderGui()
-        {
-            //Render Ability Bar
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-            GL.BindTexture(TextureTarget.Texture2D, _abilityBarTextureId);
+            float selWidth = (float)selTexW / (float)texW;
+            float selHeight = (float)selTexH / (float)texH;
 
-            //Ability Bar Vars
-            int texW = 800;
-            int texH = 80;
+            float offsetW = player.WeaponSelectIndex * (selWidth + (13.5f / (float)texW));
 
-            float translateX = (((float)Engine.Width / 2) - (texW / 2)) / (float)Engine.Width;
-            float translateY = ((float)Engine.Height - texH) / (float)Engine.Height;
 
-            //GL.Translate(translateX, translateY, -5);
+            float startSelX = (float)445 / (float)texW + offsetW;
+            float startSelY = (float)3 / (float)texH;
 
+            GL.Enable(EnableCap.Blend);
+            GL.BindTexture(TextureTarget.Texture2D, _abilitySelectedTextureId);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.DstAlpha);
+
+            GL.Translate(startSelX, startSelY, 0);            
             GL.Begin(BeginMode.Quads);
 
-            GL.TexCoord2(0, 1); GL.Vertex3(-0.78f, -0.104f, 1.0f);
-            GL.TexCoord2(1, 1); GL.Vertex3(0.78f, -0.104f, 1.0f);
-            GL.TexCoord2(1, 0); GL.Vertex3(0.78f, 0.104f, 1.0f);
-            GL.TexCoord2(0, 0); GL.Vertex3(-0.78f, 0.104f, 1.0f);
+            GL.TexCoord2(0, 1); GL.Vertex3(0.00f, 0.00f, 1.0f);
+            GL.TexCoord2(1, 1); GL.Vertex3(selWidth, 0.00f, 1.0f);
+            GL.TexCoord2(1, 0); GL.Vertex3(selWidth, selHeight, 1.0f);
+            GL.TexCoord2(0, 0); GL.Vertex3(0.00f, selHeight, 1.0f);
 
             GL.End();
 
-            //Render Ability Icons
-
+            GL.Translate(-startSelX, -startSelY, 0);
+            GL.Disable(EnableCap.Blend);
             //Render Selected Ability
+
+            GL.Disable(EnableCap.ScissorTest);
 
         }
 

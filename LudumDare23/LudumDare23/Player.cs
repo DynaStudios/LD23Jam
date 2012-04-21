@@ -41,7 +41,37 @@ namespace LudumDare23
 
             input.Keyboard.KeyDown += Keyboard_KeyDown;
 			input.Keyboard.KeyUp   += Keyboard_KeyUp;
+            input.Mouse.WheelChanged += new EventHandler<MouseWheelEventArgs>(Mouse_WheelChanged);
 		}
+
+        void Mouse_WheelChanged(object sender, MouseWheelEventArgs e)
+        {
+            #region LOL Better Don't look to long at this crap here
+
+            if (e.Delta == 1)
+            {
+                if (WeaponSelectIndex != 3)
+                {
+                    WeaponSelectIndex++;
+                }
+                else
+                {
+                    WeaponSelectIndex = 0;
+                }
+            }
+            else
+            {
+                if (WeaponSelectIndex != 0)
+                {
+                    WeaponSelectIndex--;
+                }
+                else
+                {
+                    WeaponSelectIndex = 3;
+                }
+            }
+        #endregion
+        }
 
         void Keyboard_KeyDown(object sender, OpenTK.Input.KeyboardKeyEventArgs e)
         {
@@ -71,6 +101,18 @@ namespace LudumDare23
                     break;
                 case (Key.Down):
                     k_dw=true;
+                    break;
+                case (Key.Number1):
+                    WeaponSelectIndex = 0;
+                    break;
+                case (Key.Number2):
+                    WeaponSelectIndex = 1;
+                    break;
+                case (Key.Number3):
+                    WeaponSelectIndex = 2;
+                    break;
+                case (Key.Number4):
+                    WeaponSelectIndex = 3;
                     break;
             }
         }
