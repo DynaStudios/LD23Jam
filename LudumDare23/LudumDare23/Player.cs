@@ -13,7 +13,9 @@ namespace LudumDare23
 		public Direction Direction { get; set; }
         public WorldPosition Position { get; set; }
         private InputDevice input;
-		
+
+        public int Health { get; set; }
+
 		// keys currently pressed
 		private bool k_up,k_dw,k_cc,k_cw, // turn (up, down, counter-clock-wise, clock-wise)
 		             k_fr,k_bk,k_lf,k_rg; // move (forewards, backwards, to the left, to the right)
@@ -25,6 +27,9 @@ namespace LudumDare23
             this.input = input;
             Direction = new Direction();
             Position = new WorldPosition();
+
+            Health = 20;
+
             input.Keyboard.KeyDown += Keyboard_KeyDown;
 			input.Keyboard.KeyUp   += Keyboard_KeyUp;
 		}
