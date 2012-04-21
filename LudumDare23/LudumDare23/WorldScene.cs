@@ -64,8 +64,6 @@ namespace LudumDare23
             float translateX = (((float)Engine.Width / 2) - (texW / 2)) / (float)Engine.Width;
             float translateY = ((float)Engine.Height - texH) / (float)Engine.Height;
 
-            Console.WriteLine((float)translateY);
-
             GL.Translate(translateX, translateY, 0);
 
             GL.Begin(BeginMode.Quads);
