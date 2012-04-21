@@ -20,19 +20,19 @@ namespace LudumDare23
 		// keys currently pressed
 
         // turn (up, down, counter-clock-wise, clock-wise)
-		private bool k_up;
-        private bool k_dw;
-        private bool kConterClockWise;
-        private bool kClockWise;
+		private bool keyUp;
+        private bool keyDown;
+        private bool keyCounter;
+        private bool keyClock;
         // move (forewards, backwards, to the left, to the right)
-        private bool keyForward;
-        private bool keyBackwards;
-        private bool k_lf, k_rg; 
+        private bool keyFore;
+        private bool keyBack;
+        private bool keyLeft, keyRight; 
 		
 		public Player (InputDevice input)
 		{
-			k_up=false;k_dw=false;kConterClockWise=false;kClockWise=false;
-			keyForward=false;keyBackwards=false;k_lf=false;k_rg=false;
+			keyUp=false;keyDown=false;keyCounter=false;keyClock=false;
+			keyFore=false;keyBack=false;keyLeft=false;keyRight=false;
             this.input = input;
             Direction = new Direction();
             Position = new WorldPosition();
@@ -79,28 +79,28 @@ namespace LudumDare23
             switch (e.Key)
             {
                 case (Key.A):
-                    k_lf=true;
+                    keyLeft=true;
                     break;
                 case (Key.D):
-                    k_rg=true;
+                    keyRight=true;
                     break;
                 case (Key.W):
-                    keyForward=true;
+                    keyFore=true;
                     break;
                 case (Key.S):
-                    keyBackwards=true;
+                    keyBack=true;
                     break;
                 case (Key.Left):
-                    kConterClockWise=true;
+                    keyCounter=true;
                     break;
                 case (Key.Right):
-                    kClockWise=true;
+                    keyClock=true;
                     break;
                 case (Key.Up):
-                    k_up=true;
+                    keyUp=true;
                     break;
                 case (Key.Down):
-                    k_dw=true;
+                    keyDown=true;
                     break;
                 case (Key.Number1):
                     WeaponSelectIndex = 0;
@@ -122,28 +122,28 @@ namespace LudumDare23
             switch (e.Key)
             {
                 case (Key.A):
-                    k_lf=false;
+                    keyLeft=false;
                     break;
                 case (Key.D):
-                    k_rg=false;
+                    keyRight=false;
                     break;
                 case (Key.W):
-                    keyForward=false;
+                    keyFore=false;
                     break;
                 case (Key.S):
-                    keyBackwards=false;
+                    keyBack=false;
                     break;
                 case (Key.Left):
-                    kConterClockWise=false;
+                    keyCounter=false;
                     break;
                 case (Key.Right):
-                    kClockWise=false;
+                    keyClock=false;
                     break;
                 case (Key.Up):
-                    k_up=false;
+                    keyUp=false;
                     break;
                 case (Key.Down):
-                    k_dw=false;
+                    keyDown=false;
                     break;
             }
         }
@@ -154,26 +154,38 @@ namespace LudumDare23
 		{
             Console.WriteLine("x:" + Position.x + " y: " + Position.y);
             double distance = (speed * timePast.TotalMilliseconds) / 1000;
+			bool fly=false;
 			// use short variable and function names
 			//(better overview)
 			//double dx=Direction.X, dy=Direction.Y,
 			//       px=Position.x, py=Position.y, pz=Position.z;
 			// turn
-			if (k_up) Direction.X-=0.05;
-			if (k_dw) Direction.X+=0.05;
-			if (kClockWise) Direction.Y+=0.05;
-			if (kConterClockWise) Direction.Y-=0.05;
-			// move
-            if (k_lf)
+			if (keyUp)      Direction.X-=0.05;
+			if (keyDown)    Direction.X+=0.05;
+			if (keyClock)   Direction.Y+=0.05;
+			if (keyCounter) Direction.Y-=0.05;
+			// move to the sides
+            if (keyLeft)
             {
                 Position.x -= cos(Direction.Y) * distance;
                 Position.z -= sin(Direction.Y) * distance;
             }
-            if (k_rg)
+            if (keyRight)
             {
                 Position.x += cos(Direction.Y) * distance;
-                Position.y += sin(Direction.Y) * distance;
+                Position.z += sin(Direction.Y) * distance;
             }
+			// move on the floor
+			if (!fly && keyFore)
+			{
+				Position.z += cos (Direction.Y) * distance;
+				Position.x += sin (Direction.Y) * distance;
+			}
+			if (!fly && keyBack)
+			{
+				Position.z -= cos (Direction.Y) * distance;
+				Position.x -= sin (Direction.Y) * distance;
+			}
 		}
     }
 }
