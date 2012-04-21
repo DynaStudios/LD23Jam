@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using DynaStudios;
-using System;
 using OpenTK.Graphics.OpenGL;
-using DynaStudios.IO;
 
 namespace LudumDare23.Scenes
 {
@@ -36,16 +34,10 @@ namespace LudumDare23.Scenes
             long timeDifference = _currentTime - _lastTime;
 
             //Render Stuff here
-            //GL.MatrixMode(MatrixMode.Modelview);
-            //GL.MatrixMode(MatrixMode.Texture);
-            //GL.Translate(0, 0, 0);
-            //GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             GL.Begin(BeginMode.Quads);
             GL.BindTexture(TextureTarget.Texture2D, _splashScreenTexture);
-
-            //Console.WriteLine(textureId);
 
             GL.TexCoord2(0, 1); GL.Vertex3(-1.0f, -1.0f, 1.0f);
             GL.TexCoord2(1, 1); GL.Vertex3(1.0f, -1.0f, 1.0f);
@@ -81,13 +73,11 @@ namespace LudumDare23.Scenes
             GL.Disable(EnableCap.Blend);
             GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
 
-            //TextureManager.InitTexturing();
             _splashScreenTexture = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.png");
         }
 
         public void unloadScene()
         {
-            //Unload Texture from GPU here
             Engine.Logger.Debug("SplashScreen Unload called");
             GL.Enable(EnableCap.DepthTest);
 

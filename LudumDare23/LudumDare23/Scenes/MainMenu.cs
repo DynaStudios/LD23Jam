@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DynaStudios;
+﻿using DynaStudios;
 using OpenTK.Graphics.OpenGL;
 
 namespace LudumDare23.Scenes
@@ -27,8 +22,6 @@ namespace LudumDare23.Scenes
 
             GL.Begin(BeginMode.Quads);
             GL.BindTexture(TextureTarget.Texture2D, _backgroundTexture);
-
-            //Console.WriteLine(textureId);
 
             GL.TexCoord2(0, 1); GL.Vertex3(-1.0f, -1.0f, 1.0f);
             GL.TexCoord2(1, 1); GL.Vertex3(1.0f, -1.0f, 1.0f);
