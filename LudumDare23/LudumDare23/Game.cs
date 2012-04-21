@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DynaStudios;
+﻿using DynaStudios;
 using LudumDare23.Scenes;
 
 namespace LudumDare23
@@ -21,7 +16,7 @@ namespace LudumDare23
             addScene("mainMenu", mainMenuScreen);
             
             //This is the Start Screen. Screens can switch screens.
-            switchScene("mainMenu");
+            switchScene("splashScreen");
         }
 
         static void Main(string[] args)
