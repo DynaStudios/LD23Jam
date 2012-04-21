@@ -14,12 +14,6 @@ namespace LudumDare23
         private Room _room;
         private Player player;
 
-        private Camera camera = new Camera();
-        public Camera Camera
-        {
-            get { return camera; }
-        }
-
         public WorldScene(Engine engine)
         {
             Engine = engine;
@@ -43,14 +37,8 @@ namespace LudumDare23
         {
             player.doMovement();
 
-            //moves the camera
-            camera.move();
-
             room.render();
             //chunklet1.render(camera);
-
-            // unmoves the camera for the next frame
-            camera.moveBack();
         }
 
         public void unloadScene() { }
