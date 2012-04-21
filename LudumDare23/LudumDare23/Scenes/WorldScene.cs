@@ -45,6 +45,8 @@ namespace LudumDare23
 
         public void doRender()
         {
+
+            switchBackToFrustrumRendering();
 			
 			/*if (player.Position.x<0.0) player.Position.x+=0.005;
 			else                       player.Position.x-=0.005;
@@ -68,13 +70,14 @@ namespace LudumDare23
             _room.render();
         
             //Render GUI
+            switchToOrthoRendering();
             renderGui();
 
         }
 
         private void renderGui()
         {
-            switchToOrthoRendering();
+            //switchToOrthoRendering();
 
             //Render Ability Bar
             GL.MatrixMode(MatrixMode.Modelview);
@@ -88,14 +91,14 @@ namespace LudumDare23
             float translateX = (((float)Engine.Width / 2) - (texW / 2)) / (float)Engine.Width;
             float translateY = ((float)Engine.Height - texH) / (float)Engine.Height;
 
-            GL.Translate(translateX, translateY, -5);
+            //GL.Translate(translateX, translateY, -5);
 
             GL.Begin(BeginMode.Quads);
 
-            GL.TexCoord2(0, 1); GL.Vertex3(-0.78f, -0.104f, 1.0f);
-            GL.TexCoord2(1, 1); GL.Vertex3(0.78f, -0.104f, 1.0f);
-            GL.TexCoord2(1, 0); GL.Vertex3(0.78f, 0.104f, 1.0f);
-            GL.TexCoord2(0, 0); GL.Vertex3(-0.78f, 0.104f, 1.0f);
+            GL.TexCoord2(0, 1); GL.Vertex2(-0.78f, -0.104f);
+            GL.TexCoord2(1, 1); GL.Vertex2(0.78f, -0.104f);
+            GL.TexCoord2(1, 0); GL.Vertex2(0.78f, 0.104f);
+            GL.TexCoord2(0, 0); GL.Vertex2(-0.78f, 0.104f);
 
             GL.End();
 
@@ -103,7 +106,7 @@ namespace LudumDare23
 
             //Render Selected Ability
 
-            switchBackToFrustrumRendering();
+            //switchBackToFrustrumRendering();
 
         }
 
@@ -120,12 +123,15 @@ namespace LudumDare23
         {
             GL.Disable(EnableCap.DepthTest);
             GL.MatrixMode(MatrixMode.Projection);
-            GL.PushMatrix();
+            //GL.PushMatrix();
             GL.LoadIdentity();
-            GL.Ortho(0, Engine.Width, 0, Engine.Height, -5, 1);
+            GL.Ortho(0, Engine.Width, Engine.Height, 0, -1.0, 1.0);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
+            GL.Disable(EnableCap.CullFace);
             GL.Enable(EnableCap.Blend);
+
+            GL.Clear(ClearBufferMask.DepthBufferBit);
         }
 
         /// <summary>
@@ -134,6 +140,7 @@ namespace LudumDare23
         private void switchBackToFrustrumRendering()
         {
             GL.Enable(EnableCap.DepthTest);
+            Engine.forceResize();
             GL.MatrixMode(MatrixMode.Projection);
             GL.PopMatrix();
             GL.MatrixMode(MatrixMode.Modelview);
