@@ -12,10 +12,12 @@ namespace LudumDare23
             IScene splashScreen = new SplashScreen(this);
             IScene mainMenuScreen = new MainMenu(this);
             IScene mainWorld = new WorldScene(this);
+            IScene aboutScreen = new AboutScene(this);
 
             addScene("splashScreen", splashScreen);
             addScene("mainMenu", mainMenuScreen);
             addScene("mainWorld", mainWorld);
+            addScene("aboutScreen", aboutScreen);
             
             //This is the Start Screen. Screens can switch screens.
             switchScene("mainMenu");

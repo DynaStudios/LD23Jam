@@ -141,7 +141,7 @@ namespace LudumDare23.Scenes
                     Engine.switchScene("mainWorld");
                     break;
                 case 2:
-                    Engine.switchScene("about");
+                    Engine.switchScene("aboutScene");
                     break;
                 case 3:
                     Engine.Close();
