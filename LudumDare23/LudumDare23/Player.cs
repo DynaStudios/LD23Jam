@@ -5,6 +5,8 @@ using DynaStudios.Utils;
 using DynaStudios.Blocks;
 using DynaStudios;
 using OpenTK.Input;
+using LudumDare23.Entities.Weapons;
+using System.Collections.Generic;
 
 namespace LudumDare23
 {
@@ -15,6 +17,8 @@ namespace LudumDare23
         private InputDevice input;
 
         public int Health { get; set; }
+        public List<IWeapon> Weapons { get; set; }
+        public int WeaponSelectIndex { get; set; }
 
 		// keys currently pressed
 		private bool k_up,k_dw,k_cc,k_cw, // turn (up, down, counter-clock-wise, clock-wise)
