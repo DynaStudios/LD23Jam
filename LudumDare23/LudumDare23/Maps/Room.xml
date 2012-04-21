@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
-  <bigBlock>
-    <texture>Images/Textures/Boden.png</texture>
-    <start x="-50" y="-50" z="2" />
-    <size x="100" y="100" z="1" />
-  </bigBlock>
-  <bigBlock>
-    <texture>Images/Textures/Holz.png</texture>
-    <start x="4" y="10" z="0" />
-    <size x="1" y="1" z="2" />
-  </bigBlock>
+  <object x="-20" y="-20" z="2">
+    <bigBlock>
+      <texture>Images/Textures/Boden.png</texture>
+      <start x="0" y="0" z="0" />
+      <size x="40" y="40" z="1" />
+    </bigBlock>
+  </object>
+  <object x="0" y="0" z="0">
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="4" y="10" z="0" />
+      <size x="1" y="1" z="4" />
+    </bigBlock>
+  </object>
 </root>
