@@ -63,11 +63,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Fonts\visitor2.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\DynaLogger.dll" />
@@ -75,6 +78,9 @@
     <Content Include="libs\ICSharpCode.SharpZipLib.dll" />
     <Content Include="libs\OpenTK.dll" />
     <Content Include="libs\QuickFont.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scenes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
