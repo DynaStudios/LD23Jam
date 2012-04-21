@@ -20,18 +20,18 @@ namespace LudumDare23.Scenes
 
         public void doRender()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void loadScene()
         {
             //Load Textures here
-            throw new NotImplementedException();
+          
         }
 
         public void unloadScene()
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

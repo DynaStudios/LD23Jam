@@ -20,6 +20,12 @@ namespace LudumDare23.Scenes
         {
             //Render Splash here
 
+
+            if (true)
+            {
+                //After 3 seconds switch to Main Menu
+                Engine.switchScene("mainMenu");
+            }
             
         }
 
@@ -31,6 +37,7 @@ namespace LudumDare23.Scenes
         public void unloadScene()
         {
             //Unload Texture from GPU here
+            Engine.Logger.Debug("SplashScreen Unload called");
             
         }
     }
