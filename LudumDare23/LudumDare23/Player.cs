@@ -160,7 +160,6 @@ namespace LudumDare23
 		double sqrt2;
 		public void doMovement(TimeSpan timePast)
 		{
-            Console.WriteLine("x:" + Position.x + " y: " + Position.y);
             double distance = (speed * timePast.TotalMilliseconds) / 1000;
 			bool fly=false;
 			// use short variable and function names
