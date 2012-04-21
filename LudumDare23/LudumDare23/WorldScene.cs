@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using DynaStudios.Blocks;
+using DynaStudios;
 
 namespace LudumDare23
 {
@@ -26,8 +27,7 @@ namespace LudumDare23
             player.Position.z = -3.0;
             Engine.Camera.WorldObject = (IWorldObject) player;
             Console.WriteLine("preRoom");
-            FileStream stream = new FileInfo("FirstTest.map").OpenRead;
-            room = new Room(stream, Engine.TextureManager);
+            //_room = new Room(Path.Combine(DynaStudios.Utils.StreamTool.DIR, "Maps", "map.xml"), Engine.TextureManager);
             Console.WriteLine("postRoom");
             //chunklet1 = new Chunklet(0, 0, 0);
 
@@ -37,7 +37,7 @@ namespace LudumDare23
         {
             player.doMovement();
 
-            room.render();
+            //_room.render();
             //chunklet1.render(camera);
         }
 

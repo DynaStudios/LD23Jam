@@ -62,6 +62,7 @@
     <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\SplashScreen.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="WorldScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
