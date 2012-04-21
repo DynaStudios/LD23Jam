@@ -14,8 +14,8 @@ namespace LudumDare23
         {
 
             IScene splashScreen = new SplashScreen(this);
-            loadScene(splashScreen);
-
+            addScene("splashScreen", splashScreen);
+            switchScene("splashScreen");
         }
 
         static void Main(string[] args)
