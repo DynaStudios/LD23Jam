@@ -159,6 +159,7 @@ namespace LudumDare23
         public void unloadScene() {
 
             GL.DeleteTexture(_abilityBarTextureId);
+            GL.DeleteTexture(_abilitySelectedTextureId);
 
         }
 
