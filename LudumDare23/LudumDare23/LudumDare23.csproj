@@ -87,15 +87,17 @@
     <Content Include="Images\Game\menuselection.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Textures\Boden.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="libs\DynaLogger.dll" />
     <Content Include="libs\Engine.dll" />
     <Content Include="libs\ICSharpCode.SharpZipLib.dll" />
     <Content Include="libs\OpenTK.dll" />
     <Content Include="libs\QuickFont.dll" />
+    <Content Include="Maps\Room.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\Textures\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
