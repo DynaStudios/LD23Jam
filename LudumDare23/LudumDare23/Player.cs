@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace LudumDare23
 {
-	public class Player
+	public class Player : IWorldObject
 	{
 		public Direction Direction { get; set; }
         public WorldPosition Position { get; set; }
