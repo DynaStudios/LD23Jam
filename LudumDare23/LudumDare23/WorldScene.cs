@@ -45,8 +45,8 @@ namespace LudumDare23
 
             _room.render();
         
-            Render GUI
-            //renderGui();
+            // Render GUI
+            renderGui();
 
         }
 
