@@ -25,10 +25,8 @@ namespace LudumDare23
             player = new Player(Engine.InputDevice);
             player.Position.z = -3.0;
             Engine.Camera.WorldObject = (IWorldObject) player;
-            Console.WriteLine("preRoom");
             FileStream stream = new FileInfo("FirstTest.map").OpenRead;
             room = new Room(stream, Engine.TextureManager);
-            Console.WriteLine("postRoom");
             //chunklet1 = new Chunklet(0, 0, 0);
 
         }
