@@ -1,16 +1,13 @@
 using System;
 using DynaStudios.IO;
-using DynaStudios.UI;
-using DynaStudios.Utils;
 using DynaStudios.Blocks;
-using DynaStudios;
 using OpenTK.Input;
 using LudumDare23.Entities.Weapons;
 using System.Collections.Generic;
 
 namespace LudumDare23
 {
-	public class Player
+	public class Player : IWorldObject
 	{
 		public Direction Direction { get; set; }
         public WorldPosition Position { get; set; }
