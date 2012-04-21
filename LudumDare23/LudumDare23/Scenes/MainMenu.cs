@@ -1,8 +1,13 @@
-﻿using DynaStudios;
+﻿using System;
+using System.IO;
+
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+
 using QuickFont;
-using System;
+
+using DynaStudios;
+
 
 namespace LudumDare23.Scenes
 {
@@ -71,8 +76,8 @@ namespace LudumDare23.Scenes
             GL.Enable(EnableCap.Texture2D);
             //GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
 
-            _cursorTexture = Engine.TextureManager.getTexture(@"Images\Game\menuselection.png");
-            _backgroundTexture = Engine.TextureManager.getTexture(@"Images\Game\mainmenu.png");
+            _cursorTexture = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "menuselection.png"));
+            _backgroundTexture = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "mainmenu.png"));
 
         }
 
@@ -81,6 +86,5 @@ namespace LudumDare23.Scenes
             GL.DeleteTexture(_backgroundTexture);
             GL.DeleteTexture(_cursorTexture);
         }
-
     }
 }
