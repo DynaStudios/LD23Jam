@@ -80,10 +80,15 @@ namespace LudumDare23
             GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
             _room.render();
 
+            int texW = 800;
+            int texH = 80;
+
+            int startX = (Engine.Width / 2) - (texW / 2);
+
             GL.Disable(EnableCap.DepthTest);
-            GL.Viewport(0, 0, 800, 80);
+            GL.Viewport(startX, 0, texW, texH);
             GL.Enable(EnableCap.ScissorTest);
-            GL.Scissor(0, 0, 800, 80);
+            GL.Scissor(startX, 0, texW, texH);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
             GL.Ortho(0, 1, 0, 1, -1, 1);
@@ -100,6 +105,7 @@ namespace LudumDare23
             GL.TexCoord2(0, 0); GL.Vertex3(0.00f, 1.00f, 1.0f);
 
             GL.End();
+            GL.Disable(EnableCap.ScissorTest);
 
             //Render GUI
             //switchToOrthoRendering();
