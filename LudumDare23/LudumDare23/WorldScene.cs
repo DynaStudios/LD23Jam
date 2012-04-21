@@ -12,7 +12,7 @@ namespace LudumDare23
     {
         public Engine Engine { get; set; }
         //private Chunklet chunklet1;
-        private Room _room;
+        //private Room _room;
         private Player player;
 
         public WorldScene(Engine engine)
@@ -26,9 +26,7 @@ namespace LudumDare23
             player = new Player(Engine.InputDevice);
             player.Position.z = -3.0;
             Engine.Camera.WorldObject = (IWorldObject) player;
-            Console.WriteLine("preRoom");
             //_room = new Room(Path.Combine(DynaStudios.Utils.StreamTool.DIR, "Maps", "map.xml"), Engine.TextureManager);
-            Console.WriteLine("postRoom");
             //chunklet1 = new Chunklet(0, 0, 0);
 
         }
