@@ -71,9 +71,9 @@ namespace LudumDare23
             //GL.LoadIdentity();
             GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
 			//translate and rotate into the player's view
+			GL.Rotate (player.Direction.X,1.0,0.0,0.0);
+			GL.Rotate (player.Direction.Y,0.0,1.0,0.0);
 			GL.Translate(-player.Position.x, -player.Position.y, -player.Position.z);
-			GL.Rotate (-player.Direction.X,1.0,0.0,0.0);
-			GL.Rotate (-player.Direction.Y,0.0,1.0,0.0);
             _room.render();
 
             //Render GUI

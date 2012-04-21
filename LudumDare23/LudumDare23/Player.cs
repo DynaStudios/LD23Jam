@@ -33,6 +33,7 @@ namespace LudumDare23
 		{
 			keyUp=false;keyDown=false;keyCounter=false;keyClock=false;
 			keyFore=false;keyBack=false;keyLeft=false;keyRight=false;
+			sqrt2 = Math.Sqrt(2.0)*0.5;
             this.input = input;
             Direction = new Direction();
             Position = new WorldPosition();
@@ -147,9 +148,10 @@ namespace LudumDare23
                     break;
             }
         }
-		private double sin (double ang) { return Math.Sin (ang); }
-		private double cos (double ang) { return Math.Cos (ang); }
-        private static double speed = 1.0;
+		private double sin (double ang) { return Math.Sin (ang/180.0*Math.PI); }
+		private double cos (double ang) { return Math.Cos (ang/180.0*Math.PI); }
+        private static double speed = 7.0;
+		double sqrt2;
 		public void doMovement(TimeSpan timePast)
 		{
             Console.WriteLine("x:" + Position.x + " y: " + Position.y);
@@ -160,31 +162,31 @@ namespace LudumDare23
 			//double dx=Direction.X, dy=Direction.Y,
 			//       px=Position.x, py=Position.y, pz=Position.z;
 			// turn
-			if (keyUp)      Direction.X-=0.05;
-			if (keyDown)    Direction.X+=0.05;
-			if (keyClock)   Direction.Y+=0.05;
-			if (keyCounter) Direction.Y-=0.05;
+			if (keyUp)      Direction.X-=2.5;
+			if (keyDown)    Direction.X+=2.5;
+			if (keyClock)   Direction.Y+=2.5;
+			if (keyCounter) Direction.Y-=2.5;
 			// move to the sides
             if (keyLeft)
             {
-                Position.x -= cos(Direction.Y) * distance;
-                Position.z -= sin(Direction.Y) * distance;
+                Position.x -= cos(Direction.Y) * distance * (keyFore||keyBack?sqrt2:1.0);
+                Position.z -= sin(Direction.Y) * distance * (keyFore||keyBack?sqrt2:1.0);
             }
             if (keyRight)
             {
-                Position.x += cos(Direction.Y) * distance;
-                Position.z += sin(Direction.Y) * distance;
+                Position.x += cos(Direction.Y) * distance * (keyFore||keyBack?sqrt2:1.0);
+                Position.z += sin(Direction.Y) * distance * (keyFore||keyBack?sqrt2:1.0);
             }
 			// move on the floor
 			if (!fly && keyFore)
 			{
-				Position.z += cos (Direction.Y) * distance;
-				Position.x += sin (Direction.Y) * distance;
+				Position.z -= cos (Direction.Y) * distance * (keyLeft||keyRight?sqrt2:1.0);
+				Position.x += sin (Direction.Y) * distance * (keyLeft||keyRight?sqrt2:1.0);
 			}
 			if (!fly && keyBack)
 			{
-				Position.z -= cos (Direction.Y) * distance;
-				Position.x -= sin (Direction.Y) * distance;
+				Position.z += cos (Direction.Y) * distance * (keyLeft||keyRight?sqrt2:1.0);
+				Position.x -= sin (Direction.Y) * distance * (keyLeft||keyRight?sqrt2:1.0);
 			}
 		}
     }
