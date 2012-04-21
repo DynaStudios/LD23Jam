@@ -5,4 +5,9 @@
     <start x="-50" y="-50" z="2" />
     <size x="100" y="100" z="1" />
   </bigBlock>
+  <bigBlock>
+    <texture>Images/Textures/Holz.png</texture>
+    <start x="4" y="10" z="0" />
+    <size x="1" y="1" z="2" />
+  </bigBlock>
 </root>

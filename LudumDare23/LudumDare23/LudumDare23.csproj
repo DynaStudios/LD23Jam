@@ -94,6 +94,9 @@
     <Content Include="Images\Textures\Boden.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Textures\Holz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="libs\DynaLogger.dll" />
     <Content Include="libs\Engine.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
