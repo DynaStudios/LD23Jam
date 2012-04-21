@@ -39,6 +39,8 @@ namespace LudumDare23
             _abilityBarTextureId = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "abilityBar.png"));
             string roomFilePath = Path.Combine(StreamTool.DIR, "Maps", "Room.xml");
             _room = new Room(roomFilePath, Engine.TextureManager);
+
+            Engine.forceResize();
         }
 
         public void doRender()
@@ -61,6 +63,8 @@ namespace LudumDare23
 			GL.Rotate (-player.Direction.X,1.0,0.0,0.0);
 			GL.Rotate (-player.Direction.Y,0.0,1.0,0.0);*/
 			
+
+
             _room.render();
         
             //Render GUI
@@ -70,6 +74,8 @@ namespace LudumDare23
 
         private void renderGui()
         {
+            switchToOrthoRendering();
+
             //Render Ability Bar
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
@@ -82,7 +88,7 @@ namespace LudumDare23
             float translateX = (((float)Engine.Width / 2) - (texW / 2)) / (float)Engine.Width;
             float translateY = ((float)Engine.Height - texH) / (float)Engine.Height;
 
-            GL.Translate(translateX, translateY, 0);
+            GL.Translate(translateX, translateY, -5);
 
             GL.Begin(BeginMode.Quads);
 
@@ -97,12 +103,41 @@ namespace LudumDare23
 
             //Render Selected Ability
 
+            switchBackToFrustrumRendering();
+
         }
 
         public void unloadScene() {
 
             GL.DeleteTexture(_abilityBarTextureId);
 
+        }
+
+        /// <summary>
+        /// Disable Depth Rendering to draw 2D UIs
+        /// </summary>
+        private void switchToOrthoRendering()
+        {
+            GL.Disable(EnableCap.DepthTest);
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.PushMatrix();
+            GL.LoadIdentity();
+            GL.Ortho(0, Engine.Width, 0, Engine.Height, -5, 1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.Enable(EnableCap.Blend);
+        }
+
+        /// <summary>
+        /// Enable Depth Rendering again
+        /// </summary>
+        private void switchBackToFrustrumRendering()
+        {
+            GL.Enable(EnableCap.DepthTest);
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.PopMatrix();
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.Disable(EnableCap.Blend);
         }
     }
 }
