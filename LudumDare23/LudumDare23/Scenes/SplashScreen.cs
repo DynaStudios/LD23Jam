@@ -11,6 +11,8 @@ namespace LudumDare23.Scenes
 
         public Engine Engine { get; set; }
 
+        private int _splashScreenTexture;
+
         //3 Seconds visible
         public int splashVisisble = 2;
 
@@ -34,8 +36,6 @@ namespace LudumDare23.Scenes
             long timeDifference = _currentTime - _lastTime;
 
             //Render Stuff here
-            int textureId = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.png");
-
             //GL.MatrixMode(MatrixMode.Modelview);
             //GL.MatrixMode(MatrixMode.Texture);
             //GL.Translate(0, 0, 0);
@@ -43,7 +43,7 @@ namespace LudumDare23.Scenes
             GL.LoadIdentity();
 
             GL.Begin(BeginMode.Quads);
-            GL.BindTexture(TextureTarget.Texture2D, textureId);
+            GL.BindTexture(TextureTarget.Texture2D, _splashScreenTexture);
 
             //Console.WriteLine(textureId);
 
@@ -54,11 +54,11 @@ namespace LudumDare23.Scenes
 
             GL.End();
 
-//             if (timeDifference > (long)(splashVisisble * 1000))
-//             {
-//                 //After 3 seconds switch to Main Menu
-//                 Engine.switchScene("mainMenu");
-//             }
+            if (timeDifference > (long)(splashVisisble * 1000))
+            {
+                //After 3 seconds switch to Main Menu
+                Engine.switchScene("mainMenu");
+            }
 
         }
 
@@ -73,18 +73,16 @@ namespace LudumDare23.Scenes
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
 
-            //GL.Ortho(-5.0f, 5.0f, -30.0f, 15.0f, -1.0f, 1.0f);
             GL.Ortho(-5.0f, 5.0f, -30.0f, 15.0f, -1.0f, 1.0f);
             GL.Disable(EnableCap.DepthTest);
 
             GL.Disable(EnableCap.CullFace);
             GL.Enable(EnableCap.Texture2D);
             GL.Disable(EnableCap.Blend);
-//             GL.Enable(EnableCap.Blend);
-//             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
 
             //TextureManager.InitTexturing();
+            _splashScreenTexture = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.png");
         }
 
         public void unloadScene()
@@ -92,6 +90,8 @@ namespace LudumDare23.Scenes
             //Unload Texture from GPU here
             Engine.Logger.Debug("SplashScreen Unload called");
             GL.Enable(EnableCap.DepthTest);
+
+            GL.DeleteTexture(_splashScreenTexture);
 
         }
     }
