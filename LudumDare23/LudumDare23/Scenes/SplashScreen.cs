@@ -11,8 +11,8 @@ namespace LudumDare23.Scenes
 
         private int _splashScreenTexture;
 
-        //3 Seconds visible
-        public int splashVisisble = 2;
+        //2 Seconds visible
+        public int splashVisible = 2;
 
         //Private Vars
         private Stopwatch _watch;
@@ -46,7 +46,7 @@ namespace LudumDare23.Scenes
 
             GL.End();
 
-            if (timeDifference > (long)(splashVisisble * 1000))
+            if (timeDifference > (long)(splashVisible * 1000))
             {
                 //After 3 seconds switch to Main Menu
                 Engine.switchScene("mainMenu");
