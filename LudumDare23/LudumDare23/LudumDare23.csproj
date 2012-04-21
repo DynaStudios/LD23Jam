@@ -64,6 +64,7 @@
     <None Include="Fonts\visitor2.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Maps\FirstTest.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Game\dyna_splash.png">
