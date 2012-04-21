@@ -1,5 +1,8 @@
 ﻿using System.Diagnostics;
 using DynaStudios;
+using System;
+using OpenTK.Graphics.OpenGL;
+using DynaStudios.IO;
 
 namespace LudumDare23.Scenes
 {
@@ -9,7 +12,7 @@ namespace LudumDare23.Scenes
         public Engine Engine { get; set; }
 
         //3 Seconds visible
-        public int splashVisisble = 3;
+        public int splashVisisble = 2;
 
         //Private Vars
         private Stopwatch _watch;
@@ -26,24 +29,42 @@ namespace LudumDare23.Scenes
         public void doRender()
         {
             //Render Splash here
-//             _currentTime = _watch.ElapsedMilliseconds;
-// 
-//             long timeDifference = _currentTime - _lastTime;
-// 
-//             //If more then 1 Second difference: Recalculate fps
-//             if (timeDifference > splashVisisble * 1000 && _lastTime != 0)
-//             {
-//                 //After 3 seconds switch to Main Menu
-//                 Engine.switchScene("mainMenu");
-//             }
-// 
-//             _lastTime = _currentTime;
+            _currentTime = _watch.ElapsedMilliseconds;
+
+            long timeDifference = _currentTime - _lastTime;
+
+            //Render Stuff here
+            // Front Face
+//             glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f);  // Bottom Left Of The Texture and Quad
+//             glTexCoord2f(1.0f, 0.0f); glVertex3f(1.0f, -1.0f, 1.0f);  // Bottom Right Of The Texture and Quad
+//             glTexCoord2f(1.0f, 1.0f); glVertex3f(1.0f, 1.0f, 1.0f);  // Top Right Of The Texture and Quad
+//             glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 1.0f);
+
+            GL.Begin(BeginMode.Quads);
+
+            TextureManager.InitTexturing();
+            int textureId = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.png");
+            GL.BindTexture(TextureTarget.Texture2D, textureId);
+
+            GL.TexCoord2(0.0f, 0.0f); GL.Vertex3(-1.0f, -1.0f, 1.0f);
+            GL.TexCoord2(1.0f, 0.0f); GL.Vertex3(1.0f, -1.0f, 1.0f);
+            GL.TexCoord2(1.0f, 1.0f); GL.Vertex3(1.0f, 1.0f, 1.0f);
+            GL.TexCoord2(0.0f, 1.0f); GL.Vertex3(-1.0f, 1.0f, 1.0f);
+
+            GL.End();
+
+            if (timeDifference > (long)(splashVisisble * 1000))
+            {
+                //After 3 seconds switch to Main Menu
+                Engine.switchScene("mainMenu");
+            }
 
         }
 
         public void loadScene()
         {
-
+            _watch = new Stopwatch();
+            _watch.Start();
         }
 
         public void unloadScene()

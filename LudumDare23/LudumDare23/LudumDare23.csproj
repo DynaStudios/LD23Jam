@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\Engine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,9 +47,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="DynaLogger">
       <HintPath>libs\DynaLogger.dll</HintPath>
-    </Reference>
-    <Reference Include="Engine">
-      <HintPath>libs\Engine.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK">
       <HintPath>libs\OpenTK.dll</HintPath>
@@ -64,7 +66,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Game\dyna_splash.png" />
+    <Content Include="Images\Game\dyna_splash.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="libs\DynaLogger.dll" />
     <Content Include="libs\Engine.dll" />
     <Content Include="libs\ICSharpCode.SharpZipLib.dll" />
