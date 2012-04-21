@@ -91,14 +91,22 @@ namespace LudumDare23
                     break;
             }
         }
+		private double sin (double ang) { return Math.Sin (ang); }
+		private double cos (double ang) { return Math.Cos (ang); }
 		public void doMovement()
 		{
+			// use short variable and function names
+			//(better overview)
+			double dx=Direction.X, dy=Direction.Y,
+			       px=Position.x, py=Position.y, pz=Position.z;
 			// turn
-			if (k_up) Direction.X-=0.05;
-			if (k_dw) Direction.X+=0.05;
-			if (k_cw) Direction.Y+=0.05;
-			if (k_cc) Direction.Y-=0.05;
+			if (k_up) dx-=0.05;
+			if (k_dw) dx+=0.05;
+			if (k_cw) dy+=0.05;
+			if (k_cc) dy-=0.05;
 			// move
+			if (k_lf) {px-=cos(dy); pz-=sin(dy);}
+			if (k_rg) {px+=cos(dy); pz+=sin(dy);}
 		}
     }
 }
