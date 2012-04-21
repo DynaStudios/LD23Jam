@@ -2,7 +2,7 @@
 <root>
   <bigBlock>
     <texture>Images/Textures/Boden.png</texture>
-    <start x="-10" y="-10" z="2" />
-    <size x="20" y="20" z="1" />
+    <start x="-50" y="-50" z="2" />
+    <size x="100" y="100" z="1" />
   </bigBlock>
 </root>
