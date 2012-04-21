@@ -1,9 +1,8 @@
-﻿using DynaStudios;
-using OpenTK.Graphics;
+﻿using System;
+using System.IO;
 using OpenTK.Graphics.OpenGL;
-using QuickFont;
-using System;
 using OpenTK.Input;
+using DynaStudios;
 
 namespace LudumDare23.Scenes
 {
@@ -90,8 +89,8 @@ namespace LudumDare23.Scenes
             GL.Enable(EnableCap.Texture2D);
             //GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
 
-            _cursorTexture = Engine.TextureManager.getTexture(@"Images\Game\menuselection.png");
-            _backgroundTexture = Engine.TextureManager.getTexture(@"Images\Game\mainmenu.png");
+            _cursorTexture = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "menuselection.png"));
+            _backgroundTexture = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "mainmenu.png"));
 
             Engine.InputDevice.Keyboard.KeyUp += new EventHandler<OpenTK.Input.KeyboardKeyEventArgs>(Keyboard_KeyUp);
 
@@ -149,6 +148,5 @@ namespace LudumDare23.Scenes
                     break;
             }
         }
-
     }
 }
