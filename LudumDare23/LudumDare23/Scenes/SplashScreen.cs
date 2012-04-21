@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using DynaStudios;
+using System;
 
 namespace LudumDare23.Scenes
 {
@@ -9,7 +10,7 @@ namespace LudumDare23.Scenes
         public Engine Engine { get; set; }
 
         //3 Seconds visible
-        public int splashVisisble = 3;
+        public int splashVisisble = 2;
 
         //Private Vars
         private Stopwatch _watch;
@@ -26,24 +27,22 @@ namespace LudumDare23.Scenes
         public void doRender()
         {
             //Render Splash here
-//             _currentTime = _watch.ElapsedMilliseconds;
-// 
-//             long timeDifference = _currentTime - _lastTime;
-// 
-//             //If more then 1 Second difference: Recalculate fps
-//             if (timeDifference > splashVisisble * 1000 && _lastTime != 0)
-//             {
-//                 //After 3 seconds switch to Main Menu
-//                 Engine.switchScene("mainMenu");
-//             }
-// 
-//             _lastTime = _currentTime;
+            _currentTime = _watch.ElapsedMilliseconds;
+
+            long timeDifference = _currentTime - _lastTime;
+
+            if (timeDifference > (long)(splashVisisble * 1000))
+            {
+                //After 3 seconds switch to Main Menu
+                Engine.switchScene("mainMenu");
+            }
 
         }
 
         public void loadScene()
         {
-
+            _watch = new Stopwatch();
+            _watch.Start();
         }
 
         public void unloadScene()
