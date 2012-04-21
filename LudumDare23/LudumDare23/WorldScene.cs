@@ -45,14 +45,15 @@ namespace LudumDare23
 
             _room.render();
         
-            Render GUI
-            //renderGui();
+            //Render GUI
+            renderGui();
 
         }
 
         private void renderGui()
         {
             //Render Ability Bar
+            GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
             GL.BindTexture(TextureTarget.Texture2D, _abilityBarTextureId);
 
@@ -60,9 +61,12 @@ namespace LudumDare23
             int texW = 800;
             int texH = 80;
 
-            float translateX = ((Engine.Width / 2) - (texW / 2)) / Engine.Width;
+            float translateX = (((float)Engine.Width / 2) - (texW / 2)) / (float)Engine.Width;
+            float translateY = ((float)Engine.Height - texH) / (float)Engine.Height;
 
-            GL.Translate(translateX, 0, 0);
+            Console.WriteLine((float)translateY);
+
+            GL.Translate(translateX, translateY, 0);
 
             GL.Begin(BeginMode.Quads);
 
