@@ -60,23 +60,7 @@ namespace LudumDare23
             //switchBackToFrustrumRendering();
 
             //GL.Enable(EnableCap.DepthTest);
-
-			/*if (player.Position.x<0.0) player.Position.x+=0.005;
-			else                       player.Position.x-=0.005;
-			if (player.Position.y<0.0) player.Position.y+=0.005;
-			else                       player.Position.y-=0.005;
-			if (player.Direction.x<0.0) player.Direction.X+=0.005;
-			else                        player.Direction.X-=0.005;
-			if (player.Direction.y<0.0) player.Direction.Y+=0.005;
-			else                        player.Direction.Y-=0.005;*/
 			
-            //player.doMovement();
-			
-			//translate and rotate into the player's view
-			/*GL.LoadIdentity();
-			GL.Translate(-player.Position.x, -player.Position.y, -player.Position.z);
-			GL.Rotate (-player.Direction.X,1.0,0.0,0.0);
-			GL.Rotate (-player.Direction.Y,0.0,1.0,0.0);*/
 
             player.doMovement(timePast);
             GL.Viewport(0, 0, Engine.Width, Engine.Height);
@@ -86,6 +70,10 @@ namespace LudumDare23
             Engine.forceResize();
             //GL.LoadIdentity();
             GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
+			//translate and rotate into the player's view
+			GL.Translate(-player.Position.x, -player.Position.y, -player.Position.z);
+			GL.Rotate (-player.Direction.X,1.0,0.0,0.0);
+			GL.Rotate (-player.Direction.Y,0.0,1.0,0.0);
             _room.render();
 
             //Render GUI
