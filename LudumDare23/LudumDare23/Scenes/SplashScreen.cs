@@ -34,30 +34,29 @@ namespace LudumDare23.Scenes
             long timeDifference = _currentTime - _lastTime;
 
             //Render Stuff here
-            // Front Face
-//             glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f);  // Bottom Left Of The Texture and Quad
-//             glTexCoord2f(1.0f, 0.0f); glVertex3f(1.0f, -1.0f, 1.0f);  // Bottom Right Of The Texture and Quad
-//             glTexCoord2f(1.0f, 1.0f); glVertex3f(1.0f, 1.0f, 1.0f);  // Top Right Of The Texture and Quad
-//             glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 1.0f);
+            int textureId = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.bmp");
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.BindTexture(TextureTarget.Texture2D, textureId);
+            //GL.Translate(0, 0, 0);
 
             GL.Begin(BeginMode.Quads);
 
-            TextureManager.InitTexturing();
-            int textureId = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.png");
-            GL.BindTexture(TextureTarget.Texture2D, textureId);
+            //Console.WriteLine(textureId);
 
-            GL.TexCoord2(0.0f, 0.0f); GL.Vertex3(-1.0f, -1.0f, 1.0f);
-            GL.TexCoord2(1.0f, 0.0f); GL.Vertex3(1.0f, -1.0f, 1.0f);
-            GL.TexCoord2(1.0f, 1.0f); GL.Vertex3(1.0f, 1.0f, 1.0f);
-            GL.TexCoord2(0.0f, 1.0f); GL.Vertex3(-1.0f, 1.0f, 1.0f);
+            GL.TexCoord2(0, 0); GL.Vertex3(-1.0f, -1.0f, 1.0f);
+            GL.TexCoord2(1, 0); GL.Vertex3(1.0f, -1.0f, 1.0f);
+            GL.TexCoord2(1, 1); GL.Vertex3(1.0f, 1.0f, 1.0f);
+            GL.TexCoord2(0, 1); GL.Vertex3(-1.0f, 1.0f, 1.0f);
 
             GL.End();
 
-            if (timeDifference > (long)(splashVisisble * 1000))
-            {
-                //After 3 seconds switch to Main Menu
-                Engine.switchScene("mainMenu");
-            }
+//             if (timeDifference > (long)(splashVisisble * 1000))
+//             {
+//                 //After 3 seconds switch to Main Menu
+//                 Engine.switchScene("mainMenu");
+//             }
 
         }
 
@@ -65,12 +64,31 @@ namespace LudumDare23.Scenes
         {
             _watch = new Stopwatch();
             _watch.Start();
+
+            GL.Viewport(new System.Drawing.Size(Engine.Width, Engine.Height));
+
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+
+            //GL.Ortho(-5.0f, 5.0f, -30.0f, 15.0f, -1.0f, 1.0f);
+            GL.Ortho(-5.0f, 5.0f, -30.0f, 15.0f, -1.0f, 1.0f);
+            GL.Disable(EnableCap.DepthTest);
+
+            GL.Disable(EnableCap.CullFace);
+            GL.Enable(EnableCap.Texture2D);
+            GL.Disable(EnableCap.Blend);
+//             GL.Enable(EnableCap.Blend);
+//             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
+
+            //TextureManager.InitTexturing();
         }
 
         public void unloadScene()
         {
             //Unload Texture from GPU here
             Engine.Logger.Debug("SplashScreen Unload called");
+            GL.Enable(EnableCap.DepthTest);
 
         }
     }
