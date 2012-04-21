@@ -94,11 +94,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="libs\DynaLogger.dll" />
-    <Content Include="libs\Engine.dll" />
+    <Content Include="libs\Engine.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="libs\ICSharpCode.SharpZipLib.dll" />
     <Content Include="libs\OpenTK.dll" />
     <Content Include="libs\QuickFont.dll" />
-    <Content Include="Maps\Room.xml" />
+    <Content Include="Maps\Room.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

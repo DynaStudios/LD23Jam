@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using DynaStudios.Blocks;
-using DynaStudios;
+
 using OpenTK.Graphics.OpenGL;
+
+using DynaStudios;
+using DynaStudios.Blocks;
+using DynaStudios.Utils;
+
 
 namespace LudumDare23
 {
     public class WorldScene : IScene
     {
         public Engine Engine { get; set; }
-        //private Room _room;
+        private Room _room;
         private Player player;
 
         private int _abilityBarTextureId;
@@ -30,18 +34,19 @@ namespace LudumDare23
             Engine.Camera.WorldObject = (IWorldObject) player;
             //_room = new Room(Path.Combine(DynaStudios.Utils.StreamTool.DIR, "Maps", "map.xml"), Engine.TextureManager);
 
-            _abilityBarTextureId = Engine.TextureManager.getTexture(@"Images\Game\abilityBar.png");
-
+            _abilityBarTextureId = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "abilityBar.png"));
+            string roomFilePath = Path.Combine(StreamTool.DIR, "Maps", "Room.xml");
+            _room = new Room(roomFilePath, Engine.TextureManager);
         }
 
         public void doRender()
         {
             player.doMovement();
 
-            //_room.render();
+            _room.render();
         
-            //Render GUI
-            renderGui();
+            Render GUI
+            //renderGui();
 
         }
 
