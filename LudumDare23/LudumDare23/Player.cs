@@ -1,9 +1,6 @@
 using System;
 using DynaStudios.IO;
-using DynaStudios.UI;
-using DynaStudios.Utils;
 using DynaStudios.Blocks;
-using DynaStudios;
 using OpenTK.Input;
 using LudumDare23.Entities.Weapons;
 using System.Collections.Generic;
