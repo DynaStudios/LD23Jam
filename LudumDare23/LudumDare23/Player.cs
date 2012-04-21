@@ -18,13 +18,21 @@ namespace LudumDare23
         public int WeaponSelectIndex { get; set; }
 
 		// keys currently pressed
-		private bool k_up,k_dw,k_cc,k_cw, // turn (up, down, counter-clock-wise, clock-wise)
-		             k_fr,k_bk,k_lf,k_rg; // move (forewards, backwards, to the left, to the right)
+
+        // turn (up, down, counter-clock-wise, clock-wise)
+		private bool k_up;
+        private bool k_dw;
+        private bool kConterClockWise;
+        private bool kClockWise;
+        // move (forewards, backwards, to the left, to the right)
+        private bool keyForward;
+        private bool keyBackwards;
+        private bool k_lf, k_rg; 
 		
 		public Player (InputDevice input)
 		{
-			k_up=false;k_dw=false;k_cc=false;k_cw=false;
-			k_fr=false;k_bk=false;k_lf=false;k_rg=false;
+			k_up=false;k_dw=false;kConterClockWise=false;kClockWise=false;
+			keyForward=false;keyBackwards=false;k_lf=false;k_rg=false;
             this.input = input;
             Direction = new Direction();
             Position = new WorldPosition();
@@ -47,16 +55,16 @@ namespace LudumDare23
                     k_rg=true;
                     break;
                 case (Key.W):
-                    k_fr=true;
+                    keyForward=true;
                     break;
                 case (Key.S):
-                    k_bk=true;
+                    keyBackwards=true;
                     break;
                 case (Key.Left):
-                    k_cc=true;
+                    kConterClockWise=true;
                     break;
                 case (Key.Right):
-                    k_cw=true;
+                    kClockWise=true;
                     break;
                 case (Key.Up):
                     k_up=true;
@@ -78,16 +86,16 @@ namespace LudumDare23
                     k_rg=false;
                     break;
                 case (Key.W):
-                    k_fr=false;
+                    keyForward=false;
                     break;
                 case (Key.S):
-                    k_bk=false;
+                    keyBackwards=false;
                     break;
                 case (Key.Left):
-                    k_cc=false;
+                    kConterClockWise=false;
                     break;
                 case (Key.Right):
-                    k_cw=false;
+                    kClockWise=false;
                     break;
                 case (Key.Up):
                     k_up=false;
@@ -99,20 +107,31 @@ namespace LudumDare23
         }
 		private double sin (double ang) { return Math.Sin (ang); }
 		private double cos (double ang) { return Math.Cos (ang); }
-		public void doMovement()
+        private static double speed = 1.0;
+		public void doMovement(TimeSpan timePast)
 		{
+            Console.WriteLine("x:" + Position.x + " y: " + Position.y);
+            double distance = (speed * timePast.TotalMilliseconds) / 1000;
 			// use short variable and function names
 			//(better overview)
-			double dx=Direction.X, dy=Direction.Y,
-			       px=Position.x, py=Position.y, pz=Position.z;
+			//double dx=Direction.X, dy=Direction.Y,
+			//       px=Position.x, py=Position.y, pz=Position.z;
 			// turn
-			if (k_up) dx-=0.05;
-			if (k_dw) dx+=0.05;
-			if (k_cw) dy+=0.05;
-			if (k_cc) dy-=0.05;
+			if (k_up) Direction.X-=0.05;
+			if (k_dw) Direction.X+=0.05;
+			if (kClockWise) Direction.Y+=0.05;
+			if (kConterClockWise) Direction.Y-=0.05;
 			// move
-			if (k_lf) {px-=cos(dy)*0.01; pz-=sin(dy)*0.01;}
-			if (k_rg) {px+=cos(dy)*0.01; pz+=sin(dy)*0.01;}
+            if (k_lf)
+            {
+                Position.x -= cos(Direction.Y) * distance;
+                Position.z -= sin(Direction.Y) * distance;
+            }
+            if (k_rg)
+            {
+                Position.x += cos(Direction.Y) * distance;
+                Position.y += sin(Direction.Y) * distance;
+            }
 		}
     }
 }

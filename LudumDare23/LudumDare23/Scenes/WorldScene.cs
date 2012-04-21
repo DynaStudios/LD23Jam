@@ -15,8 +15,9 @@ namespace LudumDare23
 {
     public class WorldScene : IScene
     {
+        private DateTime _lastFrameTime;
         public Engine Engine { get; set; }
-        private Room _room;
+        private Room _room = null;
         private Player player;
 
         private int _abilityBarTextureId;
@@ -33,19 +34,24 @@ namespace LudumDare23
             player.Position.x =  0.0;
             player.Position.y =  0.0;
             player.Position.z = -3.0;
-            Engine.Camera.WorldObject = (IWorldObject) player;
+            Engine.Camera.WorldObject = player;
             //_room = new Room(Path.Combine(DynaStudios.Utils.StreamTool.DIR, "Maps", "map.xml"), Engine.TextureManager);
 
             _abilityBarTextureId = Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "abilityBar.png"));
             string roomFilePath = Path.Combine(StreamTool.DIR, "Maps", "Room.xml");
-            _room = new Room(roomFilePath, Engine.TextureManager);
+            if (_room == null)
+            {
+                _room = new Room(roomFilePath, Engine.TextureManager);
+            }
 
             Engine.forceResize();
+            _lastFrameTime = DateTime.Now;
         }
 
         public void doRender()
         {
-
+            DateTime now = DateTime.Now;
+            TimeSpan timePast = now - _lastFrameTime;
 
 
 
@@ -70,7 +76,7 @@ namespace LudumDare23
 			GL.Rotate (-player.Direction.X,1.0,0.0,0.0);
 			GL.Rotate (-player.Direction.Y,0.0,1.0,0.0);*/
 
-
+            player.doMovement(timePast);
             GL.Viewport(0, 0, Engine.Width, Engine.Height);
             GL.Enable(EnableCap.DepthTest);
             GL.MatrixMode(MatrixMode.Projection);
@@ -112,7 +118,7 @@ namespace LudumDare23
             //GL.Disable(EnableCap.DepthTest);
             //GL.LoadIdentity();
             //renderGui();
-
+            _lastFrameTime = now;
         }
 
         private void renderGui()
