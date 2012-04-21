@@ -3,6 +3,7 @@ using DynaStudios.IO;
 using DynaStudios.UI;
 using DynaStudios.Utils;
 using DynaStudios.Blocks;
+using DynaStudios;
 using OpenTK.Input;
 
 namespace LudumDare23
@@ -17,7 +18,7 @@ namespace LudumDare23
 		private bool k_up,k_dw,k_cc,k_cw, // turn (up, down, counter-clock-wise, clock-wise)
 		             k_fr,k_bk,k_lf,k_rg; // move (forewards, backwards, to the left, to the right)
 		
-		public Player ()
+		public Player (InputDevice input)
 		{
 			k_up=false;k_dw=false;k_cc=false;k_cw=false;
 			k_fr=false;k_bk=false;k_lf=false;k_rg=false;
@@ -124,7 +125,7 @@ namespace LudumDare23
         {
             player = new Player(Engine.InputDevice);
             player.Position.z = -3.0;
-            Engine.Camera.WorldObject = player;
+            Engine.Camera.WorldObject = (IWorldObject) player;
 
             //chunklet1 = new Chunklet(0, 0, 0);
             
