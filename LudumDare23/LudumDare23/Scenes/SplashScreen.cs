@@ -34,21 +34,23 @@ namespace LudumDare23.Scenes
             long timeDifference = _currentTime - _lastTime;
 
             //Render Stuff here
-            int textureId = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.bmp");
+            int textureId = Engine.TextureManager.getTexture(@"Images\Game\dyna_splash.png");
 
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-            GL.BindTexture(TextureTarget.Texture2D, textureId);
+            //GL.MatrixMode(MatrixMode.Modelview);
+            //GL.MatrixMode(MatrixMode.Texture);
             //GL.Translate(0, 0, 0);
+            //GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
 
             GL.Begin(BeginMode.Quads);
+            GL.BindTexture(TextureTarget.Texture2D, textureId);
 
             //Console.WriteLine(textureId);
 
-            GL.TexCoord2(0, 0); GL.Vertex3(-1.0f, -1.0f, 1.0f);
-            GL.TexCoord2(1, 0); GL.Vertex3(1.0f, -1.0f, 1.0f);
-            GL.TexCoord2(1, 1); GL.Vertex3(1.0f, 1.0f, 1.0f);
-            GL.TexCoord2(0, 1); GL.Vertex3(-1.0f, 1.0f, 1.0f);
+            GL.TexCoord2(0, 1); GL.Vertex3(-1.0f, -1.0f, 1.0f);
+            GL.TexCoord2(1, 1); GL.Vertex3(1.0f, -1.0f, 1.0f);
+            GL.TexCoord2(1, 0); GL.Vertex3(1.0f, 1.0f, 1.0f);
+            GL.TexCoord2(0, 0); GL.Vertex3(-1.0f, 1.0f, 1.0f);
 
             GL.End();
 
@@ -62,6 +64,7 @@ namespace LudumDare23.Scenes
 
         public void loadScene()
         {
+            Engine.Camera.WorldObject = null;
             _watch = new Stopwatch();
             _watch.Start();
 
