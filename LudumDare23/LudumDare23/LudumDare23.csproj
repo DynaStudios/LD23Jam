@@ -78,6 +78,9 @@
     <None Include="Maps\FirstTest.map" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\Game\abilityBar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Game\dyna_splash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

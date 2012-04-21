@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using DynaStudios.Blocks;
 using DynaStudios;
+using OpenTK.Graphics.OpenGL;
 
 namespace LudumDare23
 {
@@ -14,6 +15,8 @@ namespace LudumDare23
         //private Chunklet chunklet1;
         //private Room _room;
         private Player player;
+
+        private int _abilityBarTextureId;
 
         public WorldScene(Engine engine)
         {
@@ -29,6 +32,8 @@ namespace LudumDare23
             //_room = new Room(Path.Combine(DynaStudios.Utils.StreamTool.DIR, "Maps", "map.xml"), Engine.TextureManager);
             //chunklet1 = new Chunklet(0, 0, 0);
 
+            _abilityBarTextureId = Engine.TextureManager.getTexture(@"Images\Game\abilityBar.png");
+
         }
 
         public void doRender()
@@ -39,6 +44,20 @@ namespace LudumDare23
             //chunklet1.render(camera);
         }
 
-        public void unloadScene() { }
+        private void renderGui()
+        {
+            //Render Ability Bar
+            
+            //Render Ability Icons
+
+            //Render Selected Ability
+
+        }
+
+        public void unloadScene() {
+
+            GL.DeleteTexture(_abilityBarTextureId);
+
+        }
     }
 }
