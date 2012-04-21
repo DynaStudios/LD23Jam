@@ -43,7 +43,13 @@ namespace LudumDare23
             input.Keyboard.KeyDown += Keyboard_KeyDown;
 			input.Keyboard.KeyUp   += Keyboard_KeyUp;
             input.Mouse.WheelChanged += new EventHandler<MouseWheelEventArgs>(Mouse_WheelChanged);
+            input.Mouse.Move += new EventHandler<MouseMoveEventArgs>(Mouse_Move);
 		}
+
+        void Mouse_Move(object sender, MouseMoveEventArgs e)
+        {
+            
+        }
 
         void Mouse_WheelChanged(object sender, MouseWheelEventArgs e)
         {
