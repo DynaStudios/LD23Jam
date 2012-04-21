@@ -94,10 +94,10 @@ namespace LudumDare23
             GL.BindTexture(TextureTarget.Texture2D, _abilityBarTextureId);
             GL.Begin(BeginMode.Quads);
 
-            GL.TexCoord2(0, 1); GL.Vertex3(-1.00f, -1.00f, 1.0f);
-            GL.TexCoord2(1, 1); GL.Vertex3(1.00f, -1.00f, 1.0f);
+            GL.TexCoord2(0, 1); GL.Vertex3(0.00f, 0.00f, 1.0f);
+            GL.TexCoord2(1, 1); GL.Vertex3(1.00f, 0.00f, 1.0f);
             GL.TexCoord2(1, 0); GL.Vertex3(1.00f, 1.00f, 1.0f);
-            GL.TexCoord2(0, 0); GL.Vertex3(-1.00f, 1.00f, 1.0f);
+            GL.TexCoord2(0, 0); GL.Vertex3(0.00f, 1.00f, 1.0f);
 
             GL.End();
 
