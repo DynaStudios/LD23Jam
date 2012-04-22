@@ -24,7 +24,6 @@ namespace LudumDare23
         public int WeaponSelectIndex { get; set; }
 
         private double _mouse_speed = 1.0;
-		public bool capture_mouse;
         private MouseDelta _mouseDeltas = new MouseDelta();
 		// keys currently pressed
 
@@ -39,6 +38,10 @@ namespace LudumDare23
         private bool keyLeft, keyRight;
 
         double sqrt2 = Math.Sqrt(2.0) * 0.5;
+		
+		// some settings and variables for control
+        private static double speed = 7.0;
+		public bool capture_mouse;
 		
 		public Player (InputDevice input)
 		{
@@ -174,7 +177,6 @@ namespace LudumDare23
         }
 		private double sin (double ang) { return Math.Sin (ang/180.0*Math.PI); }
 		private double cos (double ang) { return Math.Cos (ang/180.0*Math.PI); }
-        private static double speed = 7.0;
 		public void doMovement(TimeSpan timePast)
 		{
             double distance = (speed * timePast.TotalMilliseconds) / 1000;
