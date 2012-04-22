@@ -35,9 +35,9 @@ namespace LudumDare23
         public void loadScene()
         {
             player = new Player(Engine.InputDevice);
-            player.Position.x =  0.0;
-            player.Position.y =  -26.0;
-            player.Position.z = -3.0;
+            player.Position.x = 25.0;
+            player.Position.y =  2.0;
+            player.Position.z = 25.0;
 			player.capture_mouse = true;
             Engine.Camera.WorldObject = player;
             //_room = new Room(Path.Combine(DynaStudios.Utils.StreamTool.DIR, "Maps", "map.xml"), Engine.TextureManager);
