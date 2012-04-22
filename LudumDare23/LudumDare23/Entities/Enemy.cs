@@ -80,11 +80,10 @@ namespace LudumDare23.Entities
                 double playerPow = Math.Sqrt(Math.Pow(playerPos.x, 2) + Math.Pow(playerPos.y, 2) + Math.Pow(playerPos.z, 2));
                 double enemyPow = Math.Sqrt(Math.Pow(Position.x, 2) + Math.Pow(Position.y, 2) + Math.Pow(Position.z, 2));
 
-                double rotation = Math.Cos( aab / (playerPow * enemyPow) );
-
+                double rotation = Math.Acos( aab / (playerPow * enemyPow) ) / Math.PI * 360;
+                
                 base.Direction.Y = rotation;
                 Console.WriteLine(rotation);
-
             }
             else
             {
