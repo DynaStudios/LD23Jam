@@ -49,6 +49,25 @@ namespace LudumDare23
             {
                 _room = new Room(100, 100, 30);
                 _room.loadXml(roomFilePath, Engine.TextureManager);
+                int maxX = 0;
+                int maxY = 0;
+                int maxZ = 0;
+                for (int x = 0; x < _room.Blocks.GetLength(0); ++x)
+                {
+                    for (int y = 0; y < _room.Blocks.GetLength(1); ++y)
+                    {
+                        for (int z = 0; z < _room.Blocks.GetLength(2); ++z)
+                        {
+                            if (_room.Blocks[x, y, z] != null)
+                            {
+                                maxX = Math.Max(x, maxX);
+                                maxY = Math.Max(y, maxY);
+                                maxZ = Math.Max(z, maxZ);
+                            }
+                        }
+                    }
+                }
+                Console.WriteLine ("Max: " + maxX + ", " + maxY + ", " + maxZ);
             }
 
             Engine.forceResize();
