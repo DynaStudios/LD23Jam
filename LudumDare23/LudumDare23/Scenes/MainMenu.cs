@@ -3,6 +3,7 @@ using System.IO;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using DynaStudios;
+using IrrKlang;
 
 namespace LudumDare23.Scenes
 {
@@ -14,6 +15,7 @@ namespace LudumDare23.Scenes
         private int _backgroundTexture;
         private int _cursorTexture;
         private int _cursorYPosition = 1;
+
 
         public MainMenu(Engine engine)
         {
@@ -141,7 +143,7 @@ namespace LudumDare23.Scenes
                     Engine.switchScene("mainWorld");
                     break;
                 case 2:
-                    Engine.switchScene("aboutScene");
+                    Engine.switchScene("aboutScreen");
                     break;
                 case 3:
                     Engine.Close();

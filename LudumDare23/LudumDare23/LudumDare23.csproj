@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="irrKlang.NET4, Version=1.0.3861.18767, Culture=neutral, PublicKeyToken=a854741bd80517c7, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\irrKlang.NET4.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.0.0.201, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\OpenTK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -43,9 +51,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="DynaLogger">
       <HintPath>libs\DynaLogger.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenTK">
-      <HintPath>libs\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="Engine">
       <HintPath>libs\Engine.dll</HintPath>
@@ -103,9 +108,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="libs\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="libs\irrKlang.NET4.dll" />
     <Content Include="libs\OpenTK.dll" />
     <Content Include="libs\QuickFont.dll" />
     <Content Include="Maps\Room.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\test.ogg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
