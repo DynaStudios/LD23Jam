@@ -87,7 +87,7 @@ namespace LudumDare23
             //Render Enemies
             foreach (Enemy enemy in _enemies)
             {
-                enemy.render();
+                enemy.doRender();
             }
 
             //Render GUI

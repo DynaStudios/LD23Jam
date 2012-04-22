@@ -60,12 +60,6 @@ namespace LudumDare23.Entities
             }
         }
 
-        public override void render()
-        {
-            doRender();
-        }
-        public abstract void doRender();
-
         private void checkAggro() {
 
             var PlayerWorld = Scene.Engine.Camera.WorldObject;

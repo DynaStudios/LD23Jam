@@ -26,10 +26,8 @@ namespace LudumDare23.Entities
             Position.z = vector3.Z;
         }
 
-        public override void doRender()
+        public override void render()
         {
-            //Render Cockroach
-
             GL.BindTexture(TextureTarget.Texture2D, _cockroachTexture);
             GL.Begin(BeginMode.Quads);
 
