@@ -16,7 +16,8 @@ namespace LudumDare23
         public int Health { get; set; }
         public List<IWeapon> Weapons { get; set; }
         public int WeaponSelectIndex { get; set; }
-
+		
+		public bool capture_mouse;		
 		// keys currently pressed
 
         // turn (up, down, counter-clock-wise, clock-wise)
@@ -33,6 +34,8 @@ namespace LudumDare23
 		{
 			keyUp=false;keyDown=false;keyCounter=false;keyClock=false;
 			keyFore=false;keyBack=false;keyLeft=false;keyRight=false;
+			capture_mouse=false;
+			mouse_speed=1.0;
 			sqrt2 = Math.Sqrt(2.0)*0.5;
             this.input = input;
             Direction = new Direction();
@@ -45,10 +48,15 @@ namespace LudumDare23
             input.Mouse.WheelChanged += new EventHandler<MouseWheelEventArgs>(Mouse_WheelChanged);
             input.Mouse.Move += new EventHandler<MouseMoveEventArgs>(Mouse_Move);
 		}
-
+		
+		private double mouse_speed;
         void Mouse_Move(object sender, MouseMoveEventArgs e)
         {
-            
+			if (capture_mouse) {
+				Direction.X += e.YDelta*mouse_speed;
+				Direction.Y += e.XDelta*mouse_speed;
+            	//System.Windows.Forms.Cursor.Position = new System.Drawing.Point(500,500);
+			}
         }
 
         void Mouse_WheelChanged(object sender, MouseWheelEventArgs e)
@@ -57,17 +65,6 @@ namespace LudumDare23
 
             if (e.Delta == 1)
             {
-                if (WeaponSelectIndex != 3)
-                {
-                    WeaponSelectIndex++;
-                }
-                else
-                {
-                    WeaponSelectIndex = 0;
-                }
-            }
-            else
-            {
                 if (WeaponSelectIndex != 0)
                 {
                     WeaponSelectIndex--;
@@ -75,6 +72,17 @@ namespace LudumDare23
                 else
                 {
                     WeaponSelectIndex = 3;
+                }
+            }
+            else
+            {
+                if (WeaponSelectIndex != 3)
+                {
+                    WeaponSelectIndex++;
+                }
+                else
+                {
+                    WeaponSelectIndex = 0;
                 }
             }
         #endregion
