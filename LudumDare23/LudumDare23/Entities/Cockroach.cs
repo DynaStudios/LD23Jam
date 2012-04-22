@@ -21,12 +21,9 @@ namespace LudumDare23.Entities
         {
             this.worldScene = worldScene;
 
-            WorldPosition = new WorldPosition();
-            this.Direction = new Direction();
-
-            WorldPosition.x = vector3.X;
-            WorldPosition.y = vector3.Y;
-            WorldPosition.z = vector3.Z;
+            Position.x = vector3.X;
+            Position.y = vector3.Y;
+            Position.z = vector3.Z;
         }
 
         public override void doRender()

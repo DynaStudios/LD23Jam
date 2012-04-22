@@ -55,7 +55,7 @@ namespace LudumDare23
             _lastFrameTime = DateTime.Now;
 
             _enemies = new List<Enemy>();
-            _enemies.Add(new Cockroach(this, new Vector3(6, 6, 0)));
+            _enemies.Add(new Cockroach(this, new Vector3(0, 1, 0)));
         }
 
         public void doRender()

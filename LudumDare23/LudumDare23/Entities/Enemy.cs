@@ -7,10 +7,7 @@ namespace LudumDare23.Entities
     {
 
         public WorldScene Scene { get; set; }
-
-        public WorldPosition WorldPosition { get; set; }
-        public Direction Direction { get; set; }
-
+        
         public int Health { get; set; }
         public int Damage { get; set; }
 
@@ -77,7 +74,7 @@ namespace LudumDare23.Entities
              * 3D Distace [d = sqrt((Px - Ex)² + (Py - Ey)² + (Pz - Ez)²)]
              * P = Player | E = Enemy 
              */
-            double range = Math.Sqrt(Math.Pow(PlayerWorld.Position.x - WorldPosition.x, 2) + Math.Pow(PlayerWorld.Position.y - WorldPosition.y, 2) + Math.Pow(PlayerWorld.Position.z - WorldPosition.z, 2));
+            double range = Math.Sqrt(Math.Pow(PlayerWorld.Position.x - Position.x, 2) + Math.Pow(PlayerWorld.Position.y - Position.y, 2) + Math.Pow(PlayerWorld.Position.z - Position.z, 2));
             IsAggro = (range > AggroRange);
 
         }
