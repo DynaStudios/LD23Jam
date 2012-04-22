@@ -47,7 +47,8 @@ namespace LudumDare23
             string roomFilePath = Path.Combine(StreamTool.DIR, "Maps", "Room.xml");
             if (_room == null)
             {
-                _room = new Room(roomFilePath, Engine.TextureManager);
+                _room = new Room(100, 100, 30);
+                _room.loadXml(roomFilePath, Engine.TextureManager);
             }
 
             Engine.forceResize();
