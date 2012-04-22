@@ -10,29 +10,29 @@
   <model name="table">
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="0" z="1" />
-      <size x="1" y="1" z="6" />
+      <start x="0" y="1" z="0" />
+      <size x="1" y="6" z="1" />
     </bigBlock>
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="16" z="1" />
-      <size x="1" y="1" z="6" />
+      <start x="8" y="1" z="0" />
+      <size x="1" y="6" z="1" />
     </bigBlock>
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
-      <start x="8" y="0" z="1" />
-      <size x="1" y="1" z="6" />
+      <start x="0" y="1" z="16" />
+      <size x="1" y="6" z="1" />
     </bigBlock>
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
-      <start x="8" y="16" z="1" />
-      <size x="1" y="1" z="6" />
+      <start x="8" y="1" z="16" />
+      <size x="1" y="6" z="1" />
     </bigBlock>
     <!--plate-->
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
       <start x="0" y="0" z="0" />
-      <size x="9" y="17" z="1" />
+      <size x="9" y="1" z="17" />
     </bigBlock>
   </model>
   <model name="chairA">
@@ -101,7 +101,7 @@
   </model>
 
   <object name="ground" x="0" y="29" z="0" />
-  <object name="table" x="0" y="0" z="0" />
+  <object name="table" x="0" y="22" z="0" />
   <object name="chairA" x="10" y="2" z="0"/>
   <object name="chairA" x="10" y="10" z="0" />
   <object name="chairB" x="0" y="2" z="0" />
