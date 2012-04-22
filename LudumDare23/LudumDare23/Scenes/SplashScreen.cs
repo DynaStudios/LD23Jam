@@ -81,7 +81,7 @@ namespace LudumDare23.Scenes
             Engine.Logger.Debug("SplashScreen Unload called");
             GL.Enable(EnableCap.DepthTest);
 
-            GL.DeleteTexture(_splashScreenTexture);
+            Engine.TextureManager.unloadTexture(System.IO.Path.Combine("Images", "Game", "dyna_splash.png"));
 
         }
     }
