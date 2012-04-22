@@ -50,11 +50,13 @@ namespace LudumDare23
 		}
 		
 		private double mouse_speed;
+		private double mouseXDelta;
+		private double mouseYDelta;
         void Mouse_Move(object sender, MouseMoveEventArgs e)
         {
 			if (capture_mouse) {
-				Direction.X += e.YDelta*mouse_speed;
-				Direction.Y += e.XDelta*mouse_speed;
+				mouseYDelta += e.YDelta*mouse_speed;
+				mouseXDelta += e.XDelta*mouse_speed;
             	//System.Windows.Forms.Cursor.Position = new System.Drawing.Point(500,500);
 			}
         }
@@ -179,6 +181,12 @@ namespace LudumDare23
 			if (keyDown)    Direction.X+=2.5;
 			if (keyClock)   Direction.Y+=2.5;
 			if (keyCounter) Direction.Y-=2.5;
+			Direction.X+=mouseYDelta; mouseYDelta=0.0;
+			Direction.Y+=mouseXDelta; mouseXDelta=0.0;
+			
+			if (Direction.X<-100.0) Direction.X=-100.0;
+			if (Direction.X> 100.0) Direction.X= 100.0;
+			
 			// move to the sides
             if (keyLeft)
             {
