@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
-  <!--ground-->
-  <object x="0" y="0" z="29">
+  <model name="ground" >
     <bigBlock>
       <texture>Images/Textures/Boden.png</texture>
       <start x="0" y="0" z="0" />
-      <size x="50" y="50" z="1" />
+      <size x="50" y="1" z="50" />
     </bigBlock>
-  </object>
-  <!--table-->
-  <object x="0" y="0" z="0">
+  </model>
+  <model name="table">
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
       <start x="0" y="0" z="1" />
@@ -36,9 +34,8 @@
       <start x="0" y="0" z="0" />
       <size x="9" y="17" z="1" />
     </bigBlock>
-  </object>
-  <!--chair A-->
-  <object x="10" y="2" z="0">
+  </model>
+  <model name="chairA">
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
       <start x="0" y="0" z="5" />
@@ -69,42 +66,8 @@
       <start x="0" y="0" z="1" />
       <size x="5" y="5" z="1" />
     </bigBlock>
-  </object>
-  <!--chair B-->
-  <object x="10" y="10" z="0">
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="0" z="5" />
-      <size x="1" y="1" z="4" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="4" z="5" />
-      <size x="1" y="1" z="4" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="4" y="0" z="1" />
-      <size x="1" y="1" z="8" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="4" y="4" z="1" />
-      <size x="1" y="1" z="8" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="4" y="0" z="0" />
-      <size x="1" y="5" z="1" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="0" z="1" />
-      <size x="5" y="5" z="1" />
-    </bigBlock>
-  </object>
-  <!--chair C-->
-  <object x="0" y="2" z="0">
+  </model>
+  <model name="chairB">
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
       <start x="0" y="0" z="1" />
@@ -135,38 +98,12 @@
       <start x="0" y="0" z="4" />
       <size x="5" y="5" z="1" />
     </bigBlock>
-  </object>
-  <!--chair D-->
-  <object x="30" y="10" z="0">
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="4" y="0" z="5" />
-      <size x="1" y="1" z="4" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="4" y="4" z="5" />
-      <size x="1" y="1" z="4" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="0" z="1" />
-      <size x="1" y="1" z="8" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="4" z="1" />
-      <size x="1" y="1" z="8" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="0" z="0" />
-      <size x="1" y="5" z="1" />
-    </bigBlock>
-    <bigBlock>
-      <texture>Images/Textures/Holz.png</texture>
-      <start x="0" y="0" z="4" />
-      <size x="5" y="5" z="1" />
-    </bigBlock>
-  </object>
+  </model>
+
+  <object name="ground" x="0" y="29" z="0" />
+  <object name="table" x="0" y="0" z="0" />
+  <object name="chairA" x="10" y="2" z="0"/>
+  <object name="chairA" x="10" y="10" z="0" />
+  <object name="chairB" x="0" y="2" z="0" />
+  <object name="chairB" x="30" y="10" z="0" />
 </root>

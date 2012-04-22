@@ -36,7 +36,7 @@ namespace LudumDare23
         {
             player = new Player(Engine.InputDevice);
             player.Position.x =  0.0;
-            player.Position.y =  0.0;
+            player.Position.y =  -26.0;
             player.Position.z = -3.0;
 			player.capture_mouse = true;
             Engine.Camera.WorldObject = player;
@@ -47,27 +47,8 @@ namespace LudumDare23
             string roomFilePath = Path.Combine(StreamTool.DIR, "Maps", "Room.xml");
             if (_room == null)
             {
-                _room = new Room(100, 100, 30);
+                _room = new Room(100, 30, 100);
                 _room.loadXml(roomFilePath, Engine.TextureManager);
-                int maxX = 0;
-                int maxY = 0;
-                int maxZ = 0;
-                for (int x = 0; x < _room.Blocks.GetLength(0); ++x)
-                {
-                    for (int y = 0; y < _room.Blocks.GetLength(1); ++y)
-                    {
-                        for (int z = 0; z < _room.Blocks.GetLength(2); ++z)
-                        {
-                            if (_room.Blocks[x, y, z] != null)
-                            {
-                                maxX = Math.Max(x, maxX);
-                                maxY = Math.Max(y, maxY);
-                                maxZ = Math.Max(z, maxZ);
-                            }
-                        }
-                    }
-                }
-                Console.WriteLine ("Max: " + maxX + ", " + maxY + ", " + maxZ);
             }
 
             Engine.forceResize();
