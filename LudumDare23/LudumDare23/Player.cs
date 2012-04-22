@@ -16,8 +16,7 @@ namespace LudumDare23
         public int Health { get; set; }
         public List<IWeapon> Weapons { get; set; }
         public int WeaponSelectIndex { get; set; }
-		
-		public bool capture_mouse;		
+			
 		// keys currently pressed
 
         // turn (up, down, counter-clock-wise, clock-wise)
@@ -29,6 +28,14 @@ namespace LudumDare23
         private bool keyFore;
         private bool keyBack;
         private bool keyLeft, keyRight; 
+		
+		// some settings and variables for control
+        private static double speed = 7.0;
+		private double sqrt2;
+		public bool capture_mouse;
+		private double mouse_speed;
+		private double mouseXDelta;
+		private double mouseYDelta;
 		
 		public Player (InputDevice input)
 		{
@@ -49,9 +56,6 @@ namespace LudumDare23
             input.Mouse.Move += new EventHandler<MouseMoveEventArgs>(Mouse_Move);
 		}
 		
-		private double mouse_speed;
-		private double mouseXDelta;
-		private double mouseYDelta;
         void Mouse_Move(object sender, MouseMoveEventArgs e)
         {
 			if (capture_mouse) {
@@ -166,8 +170,6 @@ namespace LudumDare23
         }
 		private double sin (double ang) { return Math.Sin (ang/180.0*Math.PI); }
 		private double cos (double ang) { return Math.Cos (ang/180.0*Math.PI); }
-        private static double speed = 7.0;
-		double sqrt2;
 		public void doMovement(TimeSpan timePast)
 		{
             double distance = (speed * timePast.TotalMilliseconds) / 1000;
