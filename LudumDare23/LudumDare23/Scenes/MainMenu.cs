@@ -3,7 +3,6 @@ using System.IO;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using DynaStudios;
-using IrrKlang;
 
 namespace LudumDare23.Scenes
 {
