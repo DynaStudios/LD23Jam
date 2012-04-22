@@ -16,8 +16,7 @@ namespace LudumDare23
         public int Health { get; set; }
         public List<IWeapon> Weapons { get; set; }
         public int WeaponSelectIndex { get; set; }
-		
-		public bool capture_mouse;		
+			
 		// keys currently pressed
 
         // turn (up, down, counter-clock-wise, clock-wise)
@@ -29,6 +28,14 @@ namespace LudumDare23
         private bool keyFore;
         private bool keyBack;
         private bool keyLeft, keyRight; 
+		
+		// some settings and variables for control
+        private static double speed = 7.0;
+		private double sqrt2;
+		public bool capture_mouse;
+		private double mouse_speed;
+		private double mouseXDelta;
+		private double mouseYDelta;
 		
 		public Player (InputDevice input)
 		{
@@ -49,12 +56,11 @@ namespace LudumDare23
             input.Mouse.Move += new EventHandler<MouseMoveEventArgs>(Mouse_Move);
 		}
 		
-		private double mouse_speed;
         void Mouse_Move(object sender, MouseMoveEventArgs e)
         {
 			if (capture_mouse) {
-				Direction.X += e.YDelta*mouse_speed;
-				Direction.Y += e.XDelta*mouse_speed;
+				mouseYDelta += e.YDelta*mouse_speed;
+				mouseXDelta += e.XDelta*mouse_speed;
             	//System.Windows.Forms.Cursor.Position = new System.Drawing.Point(500,500);
 			}
         }
@@ -164,8 +170,6 @@ namespace LudumDare23
         }
 		private double sin (double ang) { return Math.Sin (ang/180.0*Math.PI); }
 		private double cos (double ang) { return Math.Cos (ang/180.0*Math.PI); }
-        private static double speed = 7.0;
-		double sqrt2;
 		public void doMovement(TimeSpan timePast)
 		{
             double distance = (speed * timePast.TotalMilliseconds) / 1000;
@@ -179,6 +183,12 @@ namespace LudumDare23
 			if (keyDown)    Direction.X+=2.5;
 			if (keyClock)   Direction.Y+=2.5;
 			if (keyCounter) Direction.Y-=2.5;
+			Direction.X+=mouseYDelta; mouseYDelta=0.0;
+			Direction.Y+=mouseXDelta; mouseXDelta=0.0;
+			
+			if (Direction.X<-100.0) Direction.X=-100.0;
+			if (Direction.X> 100.0) Direction.X= 100.0;
+			
 			// move to the sides
             if (keyLeft)
             {
