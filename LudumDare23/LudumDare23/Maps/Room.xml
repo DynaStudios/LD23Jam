@@ -36,7 +36,7 @@
       <size x="9" y="17" z="1" />
     </bigBlock>
   </object>
-  <!--chair-->
+  <!--chair A-->
   <object x="10" y="2" z="-4">
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
@@ -69,7 +69,7 @@
       <size x="5" y="5" z="1" />
     </bigBlock>
   </object>
-  <!--chair-->
+  <!--chair B-->
   <object x="10" y="10" z="-4">
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
@@ -94,6 +94,72 @@
     <bigBlock>
       <texture>Images/Textures/Holz.png</texture>
       <start x="4" y="0" z="-3" />
+      <size x="1" y="5" z="1" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="0" y="0" z="1" />
+      <size x="5" y="5" z="1" />
+    </bigBlock>
+  </object>
+  <!--chair C-->
+  <object x="-6" y="2" z="-4">
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="0" y="0" z="-2" />
+      <size x="1" y="1" z="8" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="0" y="4" z="-2" />
+      <size x="1" y="1" z="8" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="4" y="0" z="2" />
+      <size x="1" y="1" z="4" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="4" y="4" z="2" />
+      <size x="1" y="1" z="4" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="0" y="0" z="-3" />
+      <size x="1" y="5" z="1" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="0" y="0" z="1" />
+      <size x="5" y="5" z="1" />
+    </bigBlock>
+  </object>
+  <!--chair D-->
+  <object x="-6" y="10" z="-4">
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="4" y="0" z="2" />
+      <size x="1" y="1" z="4" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="4" y="4" z="2" />
+      <size x="1" y="1" z="4" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="0" y="0" z="-2" />
+      <size x="1" y="1" z="8" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="0" y="4" z="-2" />
+      <size x="1" y="1" z="8" />
+    </bigBlock>
+    <bigBlock>
+      <texture>Images/Textures/Holz.png</texture>
+      <start x="0" y="0" z="-3" />
       <size x="1" y="5" z="1" />
     </bigBlock>
     <bigBlock>
