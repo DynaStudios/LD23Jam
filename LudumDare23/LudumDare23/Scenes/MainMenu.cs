@@ -130,8 +130,8 @@ namespace LudumDare23.Scenes
 
         public void unloadScene()
         {
-            GL.DeleteTexture(_backgroundTexture);
-            GL.DeleteTexture(_cursorTexture);
+            Engine.TextureManager.unloadTexture(Path.Combine("Images", "Game", "menuselection.png"));
+            Engine.TextureManager.unloadTexture(Path.Combine("Images", "Game", "mainmenu.png"));
             Engine.InputDevice.Keyboard.KeyUp -= Keyboard_KeyUp;
         }
 
