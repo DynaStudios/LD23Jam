@@ -57,17 +57,6 @@ namespace LudumDare23
 
             if (e.Delta == 1)
             {
-                if (WeaponSelectIndex != 3)
-                {
-                    WeaponSelectIndex++;
-                }
-                else
-                {
-                    WeaponSelectIndex = 0;
-                }
-            }
-            else
-            {
                 if (WeaponSelectIndex != 0)
                 {
                     WeaponSelectIndex--;
@@ -75,6 +64,17 @@ namespace LudumDare23
                 else
                 {
                     WeaponSelectIndex = 3;
+                }
+            }
+            else
+            {
+                if (WeaponSelectIndex != 3)
+                {
+                    WeaponSelectIndex++;
+                }
+                else
+                {
+                    WeaponSelectIndex = 0;
                 }
             }
         #endregion
