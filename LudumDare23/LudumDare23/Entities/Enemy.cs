@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DynaStudios;
 using DynaStudios.Blocks;
 
 namespace LudumDare23.Entities
 {
-    public abstract class Enemy
+    public abstract class Enemy : AbstractDrawable
     {
 
         public WorldScene Scene { get; set; }
@@ -67,6 +63,10 @@ namespace LudumDare23.Entities
             }
         }
 
+        public override void render()
+        {
+            doRender();
+        }
         public abstract void doRender();
 
         private void checkAggro() {

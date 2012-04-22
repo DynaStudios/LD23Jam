@@ -9,6 +9,8 @@ using OpenTK.Graphics.OpenGL;
 using DynaStudios;
 using DynaStudios.Blocks;
 using DynaStudios.Utils;
+using LudumDare23.Entities;
+using OpenTK;
 
 
 namespace LudumDare23
@@ -19,6 +21,7 @@ namespace LudumDare23
         public Engine Engine { get; set; }
         private Room _room = null;
         private Player player;
+        private List<Enemy> _enemies;
 
         private int _abilityBarTextureId;
         private int _abilitySelectedTextureId;
@@ -49,6 +52,9 @@ namespace LudumDare23
 
             Engine.forceResize();
             _lastFrameTime = DateTime.Now;
+
+            _enemies = new List<Enemy>();
+            _enemies.Add(new Cockroach(this, new Vector3(6, 6, 0)));
         }
 
         public void doRender()
@@ -76,6 +82,12 @@ namespace LudumDare23
 			GL.Rotate (player.Direction.Y,0.0,1.0,0.0);
 			GL.Translate(-player.Position.x, -player.Position.y, -player.Position.z);
             _room.render();
+
+            //Render Enemies
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.render();
+            }
 
             //Render GUI
             renderGui();

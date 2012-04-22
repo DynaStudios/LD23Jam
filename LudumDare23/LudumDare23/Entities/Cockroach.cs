@@ -1,22 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DynaStudios;
+﻿using System.IO;
+using DynaStudios.Blocks;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
 
 namespace LudumDare23.Entities
 {
     public class Cockroach : Enemy
     {
+
+        private int _cockroachTexture;
+        private WorldScene worldScene;
+
         public Cockroach(WorldScene scene)
         {
             Scene = scene;
+            _cockroachTexture = scene.Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "menuselection.png"));
+        }
+
+        public Cockroach(WorldScene worldScene, Vector3 vector3)
+        {
+            this.worldScene = worldScene;
+
+            WorldPosition = new WorldPosition();
+            this.Direction = new Direction();
+
+            WorldPosition.x = vector3.X;
+            WorldPosition.y = vector3.Y;
+            WorldPosition.z = vector3.Z;
         }
 
         public override void doRender()
         {
             //Render Cockroach
 
+            GL.BindTexture(TextureTarget.Texture2D, _cockroachTexture);
+            GL.Begin(BeginMode.Quads);
+
+            GL.TexCoord2(0, 1); GL.Vertex3(-1.0f, -1.0f, 1.0f);
+            GL.TexCoord2(1, 1); GL.Vertex3(1.0f, -1.0f, 1.0f);
+            GL.TexCoord2(1, 0); GL.Vertex3(1.0f, 1.0f, 1.0f);
+            GL.TexCoord2(0, 0); GL.Vertex3(-1.0f, 1.0f, 1.0f);
+
+            GL.End();
         }
     }
 }
