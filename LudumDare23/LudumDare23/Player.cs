@@ -7,6 +7,12 @@ using System.Collections.Generic;
 
 namespace LudumDare23
 {
+    class MouseDelta
+    {
+        public double x;
+        public double y;
+    }
+
 	public class Player : IWorldObject
 	{
 		public Direction Direction { get; set; }
@@ -16,7 +22,9 @@ namespace LudumDare23
         public int Health { get; set; }
         public List<IWeapon> Weapons { get; set; }
         public int WeaponSelectIndex { get; set; }
-			
+
+        private double _mouse_speed = 1.0;
+        private MouseDelta _mouseDeltas = new MouseDelta();
 		// keys currently pressed
 
         // turn (up, down, counter-clock-wise, clock-wise)
@@ -27,23 +35,19 @@ namespace LudumDare23
         // move (forewards, backwards, to the left, to the right)
         private bool keyFore;
         private bool keyBack;
-        private bool keyLeft, keyRight; 
+        private bool keyLeft, keyRight;
+
+        double sqrt2 = Math.Sqrt(2.0) * 0.5;
 		
 		// some settings and variables for control
         private static double speed = 7.0;
-		private double sqrt2;
 		public bool capture_mouse;
-		private double mouse_speed;
-		private double mouseXDelta;
-		private double mouseYDelta;
 		
 		public Player (InputDevice input)
 		{
 			keyUp=false;keyDown=false;keyCounter=false;keyClock=false;
 			keyFore=false;keyBack=false;keyLeft=false;keyRight=false;
 			capture_mouse=false;
-			mouse_speed=1.0;
-			sqrt2 = Math.Sqrt(2.0)*0.5;
             this.input = input;
             Direction = new Direction();
             Position = new WorldPosition();
@@ -55,12 +59,15 @@ namespace LudumDare23
             input.Mouse.WheelChanged += new EventHandler<MouseWheelEventArgs>(Mouse_WheelChanged);
             input.Mouse.Move += new EventHandler<MouseMoveEventArgs>(Mouse_Move);
 		}
-		
+
         void Mouse_Move(object sender, MouseMoveEventArgs e)
         {
 			if (capture_mouse) {
-				mouseYDelta += e.YDelta*mouse_speed;
-				mouseXDelta += e.XDelta*mouse_speed;
+                lock (_mouseDeltas)
+                {
+                    _mouseDeltas.y = e.YDelta * _mouse_speed;
+                    _mouseDeltas.x = e.XDelta * _mouse_speed;
+                }
             	//System.Windows.Forms.Cursor.Position = new System.Drawing.Point(500,500);
 			}
         }
@@ -183,8 +190,15 @@ namespace LudumDare23
 			if (keyDown)    Direction.X+=2.5;
 			if (keyClock)   Direction.Y+=2.5;
 			if (keyCounter) Direction.Y-=2.5;
-			Direction.X+=mouseYDelta; mouseYDelta=0.0;
-			Direction.Y+=mouseXDelta; mouseXDelta=0.0;
+
+            lock (_mouseDeltas)
+            {
+                Direction.X += _mouseDeltas.y;
+                _mouseDeltas.y = 0.0;
+
+                Direction.Y += _mouseDeltas.x;
+                _mouseDeltas.x = 0.0;
+            }
 			
 			if (Direction.X<-100.0) Direction.X=-100.0;
 			if (Direction.X> 100.0) Direction.X= 100.0;
