@@ -9,34 +9,19 @@ namespace LudumDare23.Entities
     {
 
         private int _cockroachTexture;
-        private WorldScene worldScene;
-
-        public Cockroach(WorldScene scene)
-        {
-            Scene = scene;
-            _cockroachTexture = scene.Engine.TextureManager.getTexture(Path.Combine("Images", "Game", "menuselection.png"));
-        }
 
         public Cockroach(WorldScene worldScene, Vector3 vector3)
         {
-            this.worldScene = worldScene;
+            Scene = worldScene;
 
             Position.x = vector3.X;
             Position.y = vector3.Y;
             Position.z = vector3.Z;
+
+            base.Health = 10;
+            base.Damage = 2;
         }
 
-        public override void render()
-        {
-            GL.BindTexture(TextureTarget.Texture2D, _cockroachTexture);
-            GL.Begin(BeginMode.Quads);
 
-            GL.TexCoord2(0, 1); GL.Vertex3(-1.0f, -1.0f, 1.0f);
-            GL.TexCoord2(1, 1); GL.Vertex3(1.0f, -1.0f, 1.0f);
-            GL.TexCoord2(1, 0); GL.Vertex3(1.0f, 1.0f, 1.0f);
-            GL.TexCoord2(0, 0); GL.Vertex3(-1.0f, 1.0f, 1.0f);
-
-            GL.End();
-        }
     }
 }
